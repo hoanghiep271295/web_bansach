@@ -1,0 +1,11 @@
+﻿@model List<Web_HoangHiep.Models.TacGia>
+
+<li class="item2">
+    <a href="#"> Tác Giả <img class="arrow-img img-arrow" src="~/AssetsClient/images/arrow1.png" alt="" /> </a>
+    <ul class="cute">
+        @foreach (var item in Model)
+        {
+            <li class="subitem1"><a href="/tac-gia/@item.MaTacGia">@item.TenTacGia</a></li>
+        }
+    </ul>
+</li>

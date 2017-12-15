@@ -1,0 +1,69 @@
+﻿@model List<Web_HoangHiep.Models.CartItem>
+@{
+    ViewBag.Title = "Thanh Toan";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+}
+
+<h2 style="margin-bottom:20px;">Thanh Toán</h2>
+@if (Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Mã Sản Phẩm</td>
+                <td>Tên Sản Phẩm</td>
+                <td>Ảnh Bìa</td>
+                <td>Số Lượng</td>
+                <td>Giá Bán Sản Phẩm</td>
+                <td>Thành Tiền</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="text-align:center">@item.Sach.MaSach</td>
+                    <td style="text-align:center">@item.Sach.TenSach</td>
+                    <td style="text-align:center"><img src="@Url.Content("~/HinhAnhSP/" + @item.Sach.AnhBia)" width="50" /></td>
+
+                    <td style="text-align:center">
+                        <input type="number" class="txtSoLuong" data-id="@item.Sach.MaSach" value="@item.SoLuong">
+                    </td>
+
+                    <td style="text-align:center;color:orangered;">@item.Sach.GiaBan.GetValueOrDefault(0).ToString("N0") VNĐ</td>
+                    <td style="text-align:center;color:orangered">  @((item.SoLuong * item.Sach.GiaBan.GetValueOrDefault(0)).ToString("N0"))VNĐ</td>
+                    <td><a href="#" data-id="@item.Sach.MaSach" class="btn-delete">Xoá</a></td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+<div class="section group">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+            {
+            <div class="form-group">
+                <label>Người nhận</label>
+                <input name="shipName" class="form-control" />
+            </div>
+                <div class="form-group">
+                    <label>Điện thoại</label>
+                    <input name="mobile" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input name="address" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control" />
+                </div>
+                <button type="submit" class="btn">Gửi đơn hàng</button>
+        }
+    </div>
+
+</div>

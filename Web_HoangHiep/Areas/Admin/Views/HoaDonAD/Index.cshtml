@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<Web_HoangHiep.Models.DonHang>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+
+@section Header
+{
+    Danh Sách Hóa Đơn
+}
+
+@using (Html.BeginForm("Index", "HoaDonAD", FormMethod.Get))
+{
+    <div class="row " style="margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+
+                <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
+            </div>
+            <div class="col-md-4">
+                <h3>  <button type="submit" class="label label-success">Search</button></h3>
+
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+ 
+            <th>Tên Khách Hàng</th>
+            <th>Mã Hóa Đơn</th>   
+            <th>Tình Trạng Thanh Toán</th>
+            <th>Ngày Đặt Hàng</th>
+            <th>Ngày Giao Hàng</th>      
+            <th>Tình Trạng Giao Hàng</th>
+            <th>Chức Năng</th>
+            <th>Chi Tiết</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachHang.TenKhachHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDonHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DaThanhToan)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDatHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { @madonhang = item.MaDonHang }) |
+
+                    @Html.ActionLink("Delete", "Delele", new { @madonhang = item.MaDonHang })
+                    </td>
+<td>
+               <button class="btn" ><a href="@Url.Action("Index","ChiTietDonHangAD",new { @searchString=item.MaDonHang})">Details</a></button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))

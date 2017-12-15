@@ -1,0 +1,45 @@
+﻿@model List<Web_HoangHiep.Models.Sach>
+
+
+    <div class="wrap-in">
+        <div class="wmuSlider example1 slide-grid">
+
+            <div class="wmuSliderWrapper">
+                @{
+                    foreach (var item in Model)
+                    {
+                        <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id=item.MaSach })">
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-matter">
+                                <div class="col-md-5 banner-bag">
+                                    <img class="img-responsive " src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" alt="@item.AnhBia" width="320" />
+                                </div>
+                                <div class="col-md-7 banner-off">
+                                    <h2>SHOCK</h2>
+                                    <span>@item.TenSach</span>
+                                    <label>FOR ALL PURCHASE <b>VALUE</b></label>
+                                    <p>@item.MoTa</p>
+                                    <a style="text-decoration: none;" href="@Url.Action("AddItem","Cart",new {@productId= item.MaSach,@quantity=1, @url = Request.Url.ToString() })"><span class="on-get" >GET NOW</span></a>
+                                </div>
+
+                                <div class="clearfix"> </div>
+                            </div>
+
+                        </article>
+                            </a>
+
+                    }
+                }
+                
+            
+            </div>
+        </div>
+    </div>
+
+
+<script src="~/AssetsClient/js/jquery.wmuSlider.js"></script>
+<script>
+    $('.example1').wmuSlider();
+</script>
+
+

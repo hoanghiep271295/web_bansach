@@ -1,0 +1,71 @@
+﻿
+@model PagedList.IPagedList<Web_HoangHiep.Models.NhaXuatBan>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+
+@section Header
+{
+    Nha Xuat Ban
+}
+
+<div style="float:right">
+    <a class="btn btn-primary" href="@Url.Action("Add","NhaXuatBanAD")">Thêm Mới</a>
+</div>
+
+
+@using (Html.BeginForm("Index", "NhaXuatBanAD", FormMethod.Get))
+{
+    <div class="row " style="margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+
+                <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
+            </div>
+            <div class="col-md-4">
+                <h3>  <button type="submit" class="label label-success">Search</button></h3>
+
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên Nhà Xuất Bản</th>
+            <th>Địa Chỉ</th>
+            <th>Điện Thoại</th>
+            <th>Chức Năng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+      
+            <tr id="row_@item.MaNXB">
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNXB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNXB }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNXB }) 
+                   
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))

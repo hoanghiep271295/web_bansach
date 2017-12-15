@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<Web_HoangHiep.Models.TacGia>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+
+@section Header
+{
+    Danh Sach Tac Gia
+}
+<div style="float:right">
+    <a class="btn btn-primary" href="@Url.Action("Add","TacGiaAD")">Thêm Mới</a>
+</div>
+
+
+@using (Html.BeginForm("Index", "TacGiaAD", FormMethod.Get))
+{
+    <div class="row " style="margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+
+                <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
+            </div>
+            <div class="col-md-4">
+                <h3>  <button type="submit" class="label label-success">Search</button></h3>
+
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên Tác Giả</th>
+            <th>Điện Thoại</th>
+            <th>Tiểu Sử</th>
+            <th>Địa Chỉ</th>
+            <th>Email</th>
+            <th>Chức Năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr id="row_@item.MaTacGia">
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTacGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TieuSu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MaTacGia }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaTacGia })
+
+
+        </td>
+
+    </tr>
+}
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))

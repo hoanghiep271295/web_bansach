@@ -1,0 +1,64 @@
+﻿@model List<Web_HoangHiep.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+}
+
+@section JSFooter 
+    { 
+<script src="~/AssetsClient/js/controller/cartController.js"></script>
+    }
+
+
+<div style="width:100%;text-align:center;margin-bottom:20px"><h2 style="text-align:center">Giỏ hàng</h2></div>
+@if (Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Mã Sản Phẩm</td>
+                <td>Tên Sản Phẩm</td>
+                <td>Ảnh Bìa</td>
+                <td>Số Lượng</td>
+                <td>Giá Bán Sản Phẩm</td>
+                <td>Thành Tiền</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td style="text-align:center">@item.Sach.MaSach</td>
+                    <td style="text-align:center">@item.Sach.TenSach</td>
+                    <td style="text-align:center"><a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.Sach.MaSach })"><img src="@Url.Content("~/HinhAnhSP/" + @item.Sach.AnhBia)" width="50" /></a></td>
+
+                    <td style="text-align:center">
+                    <label> @item.SoLuong</label></td>
+         
+
+                    <td style="text-align:center;color:orangered;">@item.Sach.GiaBan.GetValueOrDefault(0).ToString("N0") VNĐ</td>
+                    <td style="text-align:center;color:orangered">  @((item.SoLuong * item.Sach.GiaBan.GetValueOrDefault(0)).ToString("N0"))VNĐ</td>
+                    <td><button class="btn"><a href="/xoa-san-pham/@item.Sach.MaSach"> Xóa</a></button></td>
+
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+
+    <button id="btnContinue" class="btn"><a style="text-decoration: none" href="sua-gio-hang" > Chỉnh Sửa Giỏ Hàng</a></button>
+    <button id="btnUpdate" class="btn"><a style="text-decoration: none" href="/" >Tiếp Tục Mua Hàng</a></button>
+    <button id="btnDeleteAll" class="btn"><a style="text-decoration: none" href="/xoa-gio-hang">Xoá giỏ hàng</a></button>
+
+    <button id="btnPayment" class="btn" ><a  style="text-decoration: none" href="@Url.Action("DatHang","Cart")">Thanh toán</a></button>
+
+}
+else
+
+{
+    <div width=100% style="text-align:center"> <span class="alert alert-danger" style="text-align:center">Hiện tại chưa có sản phẩm nào trong giỏ hàng !Cám Ơn  ...</span></div>
+}

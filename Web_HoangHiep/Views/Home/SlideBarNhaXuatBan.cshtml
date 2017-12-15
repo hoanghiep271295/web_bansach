@@ -1,0 +1,13 @@
+﻿@model List<Web_HoangHiep.Models.NhaXuatBan>
+
+
+
+<li class="item1">
+    <a href="#">Nhà Xuất Bản <img class="arrow-img" src="~/AssetsClient/images/arrow1.png" alt="" /> </a>
+    <ul class="cute">
+    @foreach (var item in Model)
+    {
+        <li class="@item.MaNXB"><a href="/nha-xuat-ban/@item.MaNXB">@item.TenNXB</a></li>
+    }
+    </ul>
+</li>

@@ -1,0 +1,66 @@
+﻿@model PagedList.IPagedList<Web_HoangHiep.Models.ChiTietDonHang>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+
+@section Header
+{
+    Danh Sách Chi Tiết Hóa Đơn
+}
+
+@using (Html.BeginForm("Index", "ChiTietDonHangAD", FormMethod.Get))
+{
+    <div class="row " style="margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+
+                <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
+            </div>
+            <div class="col-md-4">
+                <h3>  <button type="submit" class="label label-success">Search</button></h3>
+
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+
+            <th>Mã Hóa Đơn</th>
+            <th>Tên Sách</th>
+            <th>Số Lượng</th>
+            <th>Giá Bán</th>
+    
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDonHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sach.TenSach)
+                </td>
+     
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonGia)
+                </td>
+   
+
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))

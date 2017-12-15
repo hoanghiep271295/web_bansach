@@ -1,0 +1,95 @@
+﻿@model PagedList.IPagedList<Web_HoangHiep.Models.Sach>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+
+@section Header
+{
+    Danh Sách Sách
+}
+<div style="float:right">
+    <a class="btn btn-primary" href="@Url.Action("Add","SachAD")">Thêm Mới</a>
+</div>
+
+
+@using (Html.BeginForm("Index", "SachAD", FormMethod.Get))
+{
+    <div class="row " style="margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+
+                <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
+            </div>
+            <div class="col-md-4">
+                <h3>  <button type="submit" class="label label-success">Search</button></h3>
+
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên sách</th>
+            <th>Giá bán</th>
+            <th>Mô Tả</th>
+            
+            <th>Ngày Cập Nhật</th>
+            <th>Số Lượng Tồn</th>
+            <th>Ảnh Bìa </th>
+            <th>Chủ Đề</th>
+            <th>Chức Năng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr  id="row_@item.MaSach">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>
+          
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayCapNhat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuongTon)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="50" height="75" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChuDe.TenChuDe)
+                </td>
+           
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaSach }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSach }) |
+
+                    @Ajax.ActionLink("Delete Ajax", "Delete", new { @id = item.MaSach }, new AjaxOptions
+               {
+                   Confirm = "Bạn Có Chắc Chắn Muốn Xóa Bản Ghi Này ?",
+                   OnComplete = "$('#row_" + @item.MaSach + "').remove()",
+                   HttpMethod = "Delete"
+
+
+               })
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))

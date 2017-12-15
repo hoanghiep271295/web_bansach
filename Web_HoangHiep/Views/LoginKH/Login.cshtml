@@ -1,0 +1,73 @@
+﻿@model Web_HoangHiep.Models.LoginModelClient.LoginModelClient
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+}
+
+<div class="alert alert-success" style="width:100%;text-align:center;margin-top:20px;"><h2>Đăng Nhập Khách Hàng</h2></div>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.taikhoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.taikhoan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.taikhoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.password, new { htmlAttributes = new { @class = "form-control" ,@id="pass"} })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div class="login-left">
+    <h3>NEW CUSTOMERS</h3>
+    <p>Chào Mừng Khách Hàng Đến Với Hệ Thống Sách Của Chúng Tôi.Nếu Bạn Chưa Có Tài Khoản Hãy Đăng Ký Ngay Để Thỏa Sức Mua Sắm</p>
+    <a class="acount-btn" href="/dang-ky">Create an Account</a>
+</div>
+
+<style>
+    #password
+    {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+    </style>
+
+

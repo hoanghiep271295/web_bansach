@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<Web_HoangHiep.Models.KhachHang>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+
+@section Header
+{
+    Danh Sach Khach hang
+}
+<div style="float:right">
+    <a class="btn btn-primary" href="@Url.Action("Add","KhachHangAD")">Thêm Mới</a>
+</div>
+
+
+@using (Html.BeginForm("Index", "KhachHangAD", FormMethod.Get))
+{
+    <div class="row " style="margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+
+                <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
+            </div>
+            <div class="col-md-4">
+                <h3>  <button type="submit" class="label label-success">Search</button></h3>
+
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tài Khoản</th>
+            <th>Tên Khách Hàng</th>
+            <th>Mật Khẩu</th>
+            <th>Email </th>
+            <th>Địa Chỉ</th>
+            <th>Điện Thoại</th>
+            <th>Chức Năng</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.MaKhacHang">
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaiKhoan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKhachHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaKhacHang }) |
+
+                    @Html.ActionLink("Delete", "Delele", new { id = item.MaKhacHang }) 
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))

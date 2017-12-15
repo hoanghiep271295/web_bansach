@@ -1,0 +1,120 @@
+﻿@model PagedList.IPagedList<Web_HoangHiep.Models.Sach>
+@using PagedList.Mvc
+
+@{
+
+    ViewBag.Title = "HienThiSach";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+}
+
+
+@if (Model.Count == 0)
+{
+   <div class="alert alert-warning"style="margin-top:20px;width:100%;text-align:center">Hiện tại không sách với chủ đề này</div>
+}
+<div class="w_content">
+    <div class="women">
+        <a href="@Url.Action("NewProduct","Sach")"><h4>New Products -<span>Limit itemms</span> </h4></a>
+        <ul class="w_nav">
+            <li>Sort : </li>
+            <li><a class="active" href="#">Now</a></li>
+        </ul>
+        <div class="clearfix"> </div>
+        <div class="clearfix"> </div>
+    </div>
+
+    <!-- grids_of_4 -->
+
+    <div class="grid-product">
+
+        @{
+
+            foreach (var item in Model)
+            {
+                if (item.Moi == true)
+                {
+
+                    <div class="product-grid" style="text-align:center;padding-bottom:10px">
+                        <div class="content_box">
+                            <div class="left-grid-view grid-view-left">
+                                <a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.MaSach })">
+
+                                    <img src="@Url.Content("~/HinhAnhSP/" + item.AnhBia)" class="img-responsive watch-right" width="210" height="285" alt="" />
+                                    <div class="mask">
+                                        <div class="info">Quick View</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.MaSach })">
+                                @if (@item.TenSach.Length < 20)
+                                {
+                                    <h4>@item.TenSach</h4>
+                                }
+                                else
+
+                                {
+                                    <h4>@item.TenSach.Substring(0, 20) ...</h4>
+                                }
+                            </a>
+
+                            @if (@item.MoTa.Length < 35)
+                            {
+                                <p>@item.MoTa</p>
+                            }
+                            else
+
+                            {
+                                <p>@item.MoTa.Substring(0, 35) ...</p>
+                            }
+
+                            <span style="color:orangered">  @string.Format("{0:0,0}", item.GiaBan) VNĐ</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="product-grid" style="text-align:center;padding-bottom:10px">
+                        <div class="content_box">
+                            <div class="left-grid-view grid-view-left">
+                                <a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.MaSach })">
+
+                                    <img src="@Url.Content("~/HinhAnhSP/" + item.AnhBia)" class="img-responsive watch-right" width="210" height="285" alt="" />
+
+                                </a>
+                            </div>
+                            <a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.MaSach })">
+                                @if (@item.TenSach.Length < 20)
+                                {
+                                    <h4>@item.TenSach</h4>
+                                }
+                                else
+
+                                {
+                                    <h4>@item.TenSach.Substring(0, 20) ...</h4>
+                                }
+                            </a>
+
+                            @if (@item.MoTa.Length < 35)
+                            {
+                                <p>@item.MoTa</p>
+                            }
+                            else
+
+                            {
+                                <p>@item.MoTa.Substring(0, 35) ...</p>
+                            }
+
+                            <span style="color:orangered">  @string.Format("{0:0,0}", item.GiaBan) VNĐ</span>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        <div class="clearfix"> </div>
+    </div>
+    <div style="text-align:center">
+
+        @Html.PagedListPager(Model, page => Url.Action("Category", new { page }))
+
+    </div>
+</div>

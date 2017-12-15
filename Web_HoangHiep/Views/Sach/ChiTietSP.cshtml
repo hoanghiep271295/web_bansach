@@ -1,0 +1,124 @@
+﻿@model Web_HoangHiep.Models.Sach
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+    var ListRelated = (List<Web_HoangHiep.Models.Sach>)ViewBag.RelateProduct;
+}
+<link rel="stylesheet" href="~/AssetsClient/css/etalage.css" type="text/css" media="all" />
+
+<script src="/AssetsClient/js/jquery.etalage.min.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+
+        $('#etalage').etalage({
+            thumb_image_width: 300,
+            thumb_image_height: 400,
+            source_image_width: 900,
+            source_image_height: 1200,
+            show_hint: true,
+            click_callback: function (image_anchor, instance_id) {
+                alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+            }
+        });
+
+    });
+</script>
+
+<div style="margin-top:20px">
+    <div class="single_grid">
+        <div class="grid images_3_of_2">
+            <ul id="etalage">
+                <li>
+                    <a href="optionallink.html">
+                        <img class="etalage_thumb_image" src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" class="img-responsive" />
+                        <img class="etalage_source_image" src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" class="img-responsive" title="" />
+                    </a>
+                </li>
+
+            </ul>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="desc1 span_3_of_2">
+            <div class="alert alert-success" style="text-align:center"><h3> @Model.ChuDe.TenChuDe</h3></div>
+
+            <h4>@Model.TenSach</h4>
+            <div class="cart-b">
+                <div class="left-n ">@(Model.GiaBan.HasValue ? Model.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</div>
+                <a class="now-get get-cart-in" href="@Url.Action("AddItem","Cart",new {@productId= Model.MaSach,@quantity=1, @url = Request.Url.ToString() })" style="margin-right:20px">ADD TO CART</a>
+                <div class="clearfix"></div>
+            </div>
+            <h6><i>Số Lượng Trong Kho : </i>@Model.SoLuongTon Cuốn</h6>
+            <p>@Html.Raw(Model.MoTa)</p>
+            <div class="share">
+                <h5>Share Product :</h5>
+                <ul class="share_nav">
+                    <li><a href="https://www.facebook.com/"><img src="~/AssetsClient/images/facebook.png" title="facebook"></a></li>
+                    <li><a href="https://twitter.com/"><img src="~/AssetsClient/images/twitter.png" title="Twitter"></a></li>
+                    <li><a href="https://www.rss.com"><img src="~/AssetsClient/images/rss.png" title="Rss"></a></li>
+                    <li><a href="https://plus.google.com/"><img src="~/AssetsClient/images/gpluse.png" title="Google+"></a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <ul id="flexiselDemo1">
+        @foreach (var item in ListRelated)
+        {
+            <a href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
+                <li>
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="150" height="210" />
+                    <div class="grid-flex">
+                        @if (@item.TenSach.Length < 10)
+                        {
+                            <h4>@item.TenSach</h4>
+                        }
+                        else
+
+                        {
+                            <h4>@item.TenSach.Substring(0, 10) ...</h4>
+                        }
+
+                    <p style="color:orangered">@(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</p></div>
+                </li>
+            </a>
+
+        }
+
+    </ul>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 5,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+    <script type="text/javascript" src="~/AssetsClient/js/jquery.flexisel.js"></script>
+
+    <div class="toogle">
+        <h3 class="m_3">A Little About My Website</h3>
+        <p class="m_text">The Voice is an American reality television singing competition broadcast on NBC. Based on the original The Voice of Holland, the concept of the series is to find new singing talent (solo or duets) contested by aspiring singers, age 15 or over,[2] drawn from public auditions. The winner is determined by television viewers voting by telephone, Internet, SMS text, and iTunes Store purchases of the audio-recorded artists' vocal performances. They receive US$100,000 and a record deal with Universal Music Group for winning the competition. The winners of the ten seasons have been: Javier Colon, Jermaine Paul, Cassadee Pope, Danielle Bradbery, Tessanne Chin, Josh Kaufman, Craig Wayne Boyd, Sawyer Fredericks, Jordan Smith and Alisan Porter.</p>
+    </div>
+</div>

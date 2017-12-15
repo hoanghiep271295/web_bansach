@@ -1,0 +1,44 @@
+﻿@model List<Web_HoangHiep.Models.CartItem>
+@{
+    ViewBag.Title = "Sua Gio Hang";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+}
+
+<h2 style="margin-bottom:20px;">Sửa Giỏ Hàng</h2>
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <thead>
+        <tr>
+            <td>Mã Sản Phẩm</td>
+            <td>Tên Sản Phẩm</td>
+            <td>Ảnh Bìa</td>
+            <td>Số Lượng</td>
+            <td>Giá Bán Sản Phẩm</td>
+            <td>Thành Tiền</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td style="text-align:center">@item.Sach.MaSach</td>
+                <td style="text-align:center">@item.Sach.TenSach</td>
+                <td style="text-align:center"><img src="@Url.Content("~/HinhAnhSP/" + @item.Sach.AnhBia)" width="50" /></td>
+
+                @using (Html.BeginForm("SuaGioHang", "Cart", new { @masach = @item.Sach.MaSach }))
+                {
+                    <td style="text-align:center">
+                        <input class="form-control" name="SoLuong" value="@item.SoLuong" type="number">
+                    </td>
+                    <td style="text-align:center;color:orangered">  @((item.SoLuong * item.Sach.GiaBan.GetValueOrDefault(0)).ToString("N0"))VNĐ</td>
+                    <td style="text-align:center;color:orangered;">  @item.Sach.GiaBan.GetValueOrDefault(0).ToString("N0") VNĐ</td>
+                    <td><input type="submit" value="Update" class="btn"></td>
+                }
+            </tr>
+
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,50 @@
+﻿@model  Web_HoangHiep.Areas.Admin.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Admin/Views/LayOut/Admin_LayOut.cshtml";
+}
+@section Header
+{
+   Login
+    }
+<div class="main-page login-page ">
+
+    <h3 class="title1">Login Page</h3>
+    <div class="widget-shadow">
+        <div class="login-top">
+            <h4>Welcome to Admin_Web <a href="@Url.Action("SingIn","User")">  Sign Up »</a> </h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+        <div class="login-body">
+            @using (Html.BeginForm("Login", "login", FormMethod.Post))
+            {
+
+                @Html.TextBoxFor(model => model.UserName, new { @class = "user", @autofocus = "autofocus", @placeholder = "Nhập Tên Đăng Nhập",@value="@ViewBag.UserName" } )
+
+
+                @Html.PasswordFor(model => model.Password,  new { @class = "lock", @placeholder =  "Nhập Mật Khẩu "})
+
+                <input type="submit" name="Sign In" value="Đăng Nhập">
+
+                <div class="forgot-grid">
+                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>
+                    <div class="forgot">
+                        <a href="#">forgot password?</a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="login-page-bottom">
+
+
+    </div>
+    </div>
+<style>
+    ul{
+        list-style:none;
+    }
+    </style>

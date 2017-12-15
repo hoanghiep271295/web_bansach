@@ -1,0 +1,29 @@
+﻿@model List<Web_HoangHiep.Models.ChuDe>
+<div class="top-nav rsidebar span_1_of_left">
+    <h3 class="cate" style="text-align:center">CATEGORIES</h3>
+    <ul class="menu">
+
+        <ul class="kid-menu ">
+            <li><a href="@Url.Action("Index","Home")">Trang Chủ</a></li>
+           
+        </ul>
+
+           @{Html.RenderAction("SlideBarNhaXuatBan", "Home"); }
+            @{Html.RenderAction("SlideBarTacGia", "Home"); }
+
+        <li class="item3">
+            <a href="#"> Chủ Đề <img class="arrow-img img-arrow" src="~/AssetsClient/images/arrow1.png" alt="" /> </a>
+            <ul class="cute">
+                @foreach (var item in Model)
+                {
+                    <li class="@item.MaChuDe"><a href="/chu-de/@item.MaChuDe">@item.TenChuDe</a></li>
+                }
+
+            </ul>
+        </li>
+        <ul class="kid-menu ">
+            <li class="menu-kid-left"><a href="/dang-nhap">Contact us</a></li>
+            </ul>
+        </ul>
+
+</div>

@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/LayOutClient/LayOutClient.cshtml";
+    var newproduct = (List<Web_HoangHiep.Models.Sach>)ViewBag.NewProduct;
+    var featureproduct = (List<Web_HoangHiep.Models.Sach>)ViewBag.FeatureProduct;
+    var SpecialProduct = (List<Web_HoangHiep.Models.Sach>)ViewBag.SpecialProduct;
+}
+
+@section slide
+{
+
+@{Html.RenderAction("Slide", "Home"); }
+
+
+}
+<!--Sản Phẩm Đặc Biệt Dưới Slide-->
+
+<div class="shoes-grid-left">
+
+
+
+    @foreach (var item in SpecialProduct)
+    {
+      
+            <div class="col-md-6 con-sed-grid sed-left-top">
+               
+                    <div class="elit-grid">
+                        @if (item.TenSach.Length < 15)
+                        {
+                            <h4>@item.TenSach</h4>
+                        }
+                        else
+
+                        {
+                            <h4>@item.TenSach.Substring(0, 15) ...</h4>
+                        }
+
+                        <label>Cơ Hội Vàng</label>
+
+                        @if (item.MoTa.Length < 35)
+                        {
+                            <p>@item.MoTa</p>
+                        }
+                        else
+                        {
+                            <p>@item.MoTa.Substring(0, 35) ...</p>
+                        }
+
+                        <a style="text-decoration: none;" href="@Url.Action("AddItem","Cart",new {@productId= item.MaSach,@quantity=1, @url = Request.Url.ToString() })"> <span class="on-get">GET NOW</span></a>
+                        <div class="clearfix"> </div>
+                        <div style="margin-top:20px;color:coral" class="actual">@(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</div>
+                    </div>
+                <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
+                    <img class="img-responsive shoe-left" src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="150" alt="" />
+                </a>
+                    <div class="clearfix"> </div>
+          
+</div>
+     
+
+    }
+
+
+
+
+
+
+    <style>
+        .sed-left-top
+        {
+            margin:0 2% 0 0;
+         }
+        </style>
+</div>
+<div class="products">
+    <h5 class="latest-product">Sản Phẩm Mới</h5>
+    <a class="view-all" href="@Url.Action("NewProduct","Sach")">Xem Tất Cả<span> </span></a>
+</div>
+<div class="product-left">
+    @foreach (var item in newproduct)
+    {
+        <div class="col-md-4 chain-grid">
+            <a style="text-decoration: none;"  href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
+            <img class="img-responsive chain" src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="220" height="398" alt="" />
+     
+            </a>
+            <span class="star"> </span>
+            <div class="grid-chain-bottom">
+            <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
+               @if (@item.TenSach.Length > 25)
+               {
+                <h6>
+                    @item.TenSach.Substring(0, 25)  ...
+                    </h6>
+                    }
+                    else
+
+                    {
+                   <h6>@item.TenSach</h6>
+                    }
+</a>
+                <div class="star-price">
+                    <div class="dolor-grid">
+                        <span class="actual">@(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</span>
+                 
+                        <span class="rating">
+                            <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
+                            <label for="rating-input-1-5" class="rating-star1"> </label>
+                            <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
+                            <label for="rating-input-1-4" class="rating-star1"> </label>
+                            <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
+                            <label for="rating-input-1-3" class="rating-star"> </label>
+                            <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
+                            <label for="rating-input-1-2" class="rating-star"> </label>
+                            <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
+                            <label for="rating-input-1-1" class="rating-star"> </label>
+                        </span>
+                    </div>
+                    <a style="text-decoration: none;" class="now-get get-cart" href="@Url.Action("AddItem","Cart",new {@productId= item.MaSach,@quantity=1, @url = Request.Url.ToString() }) ">ADD TO CART</a>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <style>
+        .chain-grid {
+            margin:0 2% 0 0;
+        }
+        </style>
+ 
+    <div class="clearfix"> </div>
+</div>
+<div class="products">
+    <h5 class="latest-product">Sản Phẩm Bán Chạy</h5>
+    <a  style="text-decoration: none;" class="view-all" href="@Url.Action("ListAllProduct","Sach")">VIEW ALL<span> </span></a>
+</div>
+<div class="product-left">
+    @foreach (var item in featureproduct)
+    {
+        
+    <div class="col-md-4 chain-grid">
+        <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})"><img class="img-responsive chain" src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="220" alt="" /></a>
+        <span class="star"> </span>
+        <div class="grid-chain-bottom">
+           <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
+    @if (@item.TenSach.Length > 20)
+    {
+        <h6>
+            @item.TenSach.Substring(0, 20)  ...
+        </h6>
+    }
+    else
+
+    {
+        <h6>@item.TenSach</h6>
+    }
+             </a>
+
+            <div class="star-price">
+                <div class="dolor-grid">
+                    <span class="actual">@(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</span>
+                  
+                    <span class="rating">
+                        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
+                        <label for="rating-input-1-5" class="rating-star1"> </label>
+                        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
+                        <label for="rating-input-1-4" class="rating-star1"> </label>
+                        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
+                        <label for="rating-input-1-3" class="rating-star"> </label>
+                        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
+                        <label for="rating-input-1-2" class="rating-star"> </label>
+                        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
+                        <label for="rating-input-1-1" class="rating-star"> </label>
+                    </span>
+                </div>
+                <a style="text-decoration: none;" class="now-get get-cart" href="@Url.Action("AddItem","Cart",new {@productId= item.MaSach,@quantity=1, @url = Request.Url.ToString() }) ">ADD TO CART</a>
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    }
+    <div class="clearfix"> </div>
+</div>
+<div class="clearfix"> </div>
