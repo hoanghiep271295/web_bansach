@@ -75,17 +75,7 @@
            
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.MaSach }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSach }) |
-
-                    @Ajax.ActionLink("Delete Ajax", "Delete", new { @id = item.MaSach }, new AjaxOptions
-               {
-                   Confirm = "Bạn Có Chắc Chắn Muốn Xóa Bản Ghi Này ?",
-                   OnComplete = "$('#row_" + @item.MaSach + "').remove()",
-                   HttpMethod = "Delete"
-
-
-               })
-
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSach })
                 </td>
 
             </tr>
