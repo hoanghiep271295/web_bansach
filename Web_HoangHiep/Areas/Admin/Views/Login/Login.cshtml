@@ -5,14 +5,16 @@
 }
 @section Header
 {
-   Login
-    }
+<script>
+    $('#page-wrapper').css({"padding-top": "3em 3em 2.5em"});
+</script>
+}
 <div class="main-page login-page ">
 
-    <h3 class="title1">Login Page</h3>
+    <h3 class="title1">Đăng nhập</h3>
     <div class="widget-shadow">
         <div class="login-top">
-            <h4>Welcome to Admin_Web <a href="@Url.Action("SingIn","User")">  Sign Up »</a> </h4>
+            <h4>Đăng kí tài khoản Admin <a href="@Url.Action("SingIn","User")"> Đăng kí »</a> </h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         </div>
         <div class="login-body">

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Bootstrap Core CSS -->
     <link href="~/Areas/AssetAdmin/css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -131,7 +131,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!--left-fixed -navigation-->
         <!-- header-starts -->
-        @*<div class="sticky-header header-section ">
+        <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
                 <button id="showLeftPush"><i class="fa fa-bars"></i></button>
@@ -340,7 +340,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
-        </div>*@
+        </div>
         <!-- //header-ends -->
         <!-- main content start-->
         <div id="page-wrapper">
@@ -373,12 +373,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
 
-			//showLeftPush.onclick = function() {
-			//	classie.toggle( this, 'active' );
-			//	classie.toggle( body, 'cbp-spmenu-push-toright' );
-			//	classie.toggle( menuLeft, 'cbp-spmenu-open' );
-			//	disableOther( 'showLeftPush' );
-			//};
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
 
 			function disableOther( button ) {
 				if( button !== 'showLeftPush' ) {
