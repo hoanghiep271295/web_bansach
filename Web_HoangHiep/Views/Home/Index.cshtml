@@ -47,7 +47,8 @@
                             <p>@item.MoTa.Substring(0, 35) ...</p>
                         }
 
-                        <a style="text-decoration: none;" href="@Url.Action("AddItem","Cart",new {@productId= item.MaSach,@quantity=1, @url = Request.Url.ToString() })"> <span class="on-get">GET NOW</span></a>
+                        <a style="text-decoration: none;" href="@Url.Action("AddItem","Cart",new {@productId= item.MaSach,@quantity=1, @url = Request.Url.ToString() })"> 
+                        <span class="on-get">GET NOW</span></a>
                         <div class="clearfix"> </div>
                         <div style="margin-top:20px;color:coral" class="actual">@(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</div>
                     </div>
@@ -134,7 +135,7 @@
 </div>
 <div class="products">
     <h5 class="latest-product">Sản Phẩm Bán Chạy</h5>
-    <a  style="text-decoration: none;" class="view-all" href="@Url.Action("ListAllProduct","Sach")">VIEW ALL<span> </span></a>
+    <a  style="text-decoration: none;" class="view-all" href="@Url.Action("ListAllProduct","Sach")"> Xem tất cả<span> </span></a>
 </div>
 <div class="product-left">
     @foreach (var item in featureproduct)

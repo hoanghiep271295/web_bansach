@@ -61,8 +61,8 @@
                     @if (Session["KhachHang"] == null)
                     {
                         <ul class="login">
-                            <li><a href="/dang-nhap"><span> </span>Đăng Nhập</a></li> |
-                            <li><a href="/dang-ky">Đăng ký</a></li>
+                            <li><a href="/dang-nhap"><span> </span>Login</a></li> |
+                            <li><a href="/dang-ky">Sign Up</a></li>
                         </ul>
                     }
                     else
@@ -70,7 +70,7 @@
                     {
                         <ul class="login">
                             <li><a href="/"><span> </span>@Session["UserName"]</a></li> |
-                            <li><a href="/dang-xuat">Đăng Xuất</a></li>
+                            <li><a href="/dang-xuat">Log Out</a></li>
                         </ul>
                     }
 
