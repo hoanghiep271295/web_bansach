@@ -8,7 +8,7 @@
 
 <div class="w_content">
     <div class="women">
-        <a href="#"><h4>All Products -<span>Limit items</span> </h4></a>
+        <a href="#"><h4>Tất cả sách-<span>Limit items</span> </h4></a>
         <ul class="w_nav">
             <li>Sort : </li>
             <li><a class="active" href="#">Now</a></li> |
@@ -36,7 +36,7 @@
                         <div class="left-grid-view grid-view-left">
                             <a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.MaSach })">
 
-                                <img src="@Url.Content("~/HinhAnhSP/" + item.AnhBia)" class="img-responsive watch-right" width="210" height="285" alt="" />
+                                <img src="@Url.Content(item.AnhBia)" class="img-responsive watch-right" width="210" height="285" alt="" />
                                 <div class="mask">
                                         <div class="info">Quick View</div>
                                     </div>
@@ -79,7 +79,7 @@
                         <div class="left-grid-view grid-view-left">
                             <a style="text-decoration: none;" href="@Url.Action("ChiTietSP", "Sach", new { @id = item.MaSach })">
 
-                                <img src="@Url.Content("~/HinhAnhSP/" + item.AnhBia)" class="img-responsive watch-right" width="210" height="285" alt="" />
+                                <img src="@Url.Content(item.AnhBia)" class="img-responsive watch-right" width="210" height="285" alt="" />
                          
                             </a>
                         </div>

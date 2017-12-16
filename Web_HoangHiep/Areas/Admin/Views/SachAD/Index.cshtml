@@ -67,7 +67,7 @@
                     @Html.DisplayFor(modelItem => item.SoLuongTon)
                 </td>
                 <td>
-                    <img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="50" height="75" />
+                    <img src="@Url.Content(+item.AnhBia)" width="50" height="75" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ChuDe.TenChuDe)

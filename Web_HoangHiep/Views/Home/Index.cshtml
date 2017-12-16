@@ -52,7 +52,7 @@
                         <div style="margin-top:20px;color:coral" class="actual">@(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</div>
                     </div>
                 <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
-                    <img class="img-responsive shoe-left" src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="150" alt="" />
+                    <img class="img-responsive shoe-left" src="@Url.Content(+item.AnhBia)" width="150" alt="" />
                 </a>
                     <div class="clearfix"> </div>
           
@@ -82,7 +82,7 @@
     {
         <div class="col-md-4 chain-grid">
             <a style="text-decoration: none;"  href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">
-            <img class="img-responsive chain" src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="220" height="398" alt="" />
+            <img class="img-responsive chain" src="@Url.Content(+item.AnhBia)" width="220" height="398" alt="" />
      
             </a>
             <span class="star"> </span>
@@ -141,7 +141,7 @@
     {
         
     <div class="col-md-4 chain-grid">
-        <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})"><img class="img-responsive chain" src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="220" alt="" /></a>
+        <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})"><img class="img-responsive chain" src="@Url.Content(+item.AnhBia)" width="220" alt="" /></a>
         <span class="star"> </span>
         <div class="grid-chain-bottom">
            <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id= item.MaSach})">

@@ -78,7 +78,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                     if (ModelState.IsValid)
                     {
                         var fileName = Path.GetFileName(fileUpload.FileName);
-                        var path = Path.Combine(Server.MapPath("~/HinhAnhSP/"), fileName);
+                        var path = Path.Combine(Server.MapPath(""), fileName);
                         if (System.IO.File.Exists(path))
                         {
                             ViewBag.ThongBao = "Hình Ảnh Đã Tồn Tại";

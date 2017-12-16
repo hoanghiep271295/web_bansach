@@ -33,7 +33,7 @@
 
                     <td style="text-align:center">@item.Sach.MaSach</td>
                     <td style="text-align:center">@item.Sach.TenSach</td>
-                    <td style="text-align:center"><a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.Sach.MaSach })"><img src="@Url.Content("~/HinhAnhSP/" + @item.Sach.AnhBia)" width="50" /></a></td>
+                    <td style="text-align:center"><a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.Sach.MaSach })"><img src="@Url.Content( + @item.Sach.AnhBia)" width="50" /></a></td>
 
                     <td style="text-align:center">
                     <label> @item.SoLuong</label></td>
