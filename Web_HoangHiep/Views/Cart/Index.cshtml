@@ -33,7 +33,8 @@
 
                     <td style="text-align:center">@item.Sach.MaSach</td>
                     <td style="text-align:center">@item.Sach.TenSach</td>
-                    <td style="text-align:center"><a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.Sach.MaSach })"><img src="@Url.Content( + @item.Sach.AnhBia)" width="50" /></a></td>
+                    <td style="text-align:center"><a href="@Url.Action("ChiTietSP", "Sach", new { @id = item.Sach.MaSach })">
+                        <img src="@Url.Content(@item.Sach.AnhBia)" width="50" /></a></td>
 
                     <td style="text-align:center">
                     <label> @item.SoLuong</label></td>
@@ -41,7 +42,7 @@
 
                     <td style="text-align:center;color:orangered;">@item.Sach.GiaBan.GetValueOrDefault(0).ToString("N0") VNĐ</td>
                     <td style="text-align:center;color:orangered">  @((item.SoLuong * item.Sach.GiaBan.GetValueOrDefault(0)).ToString("N0"))VNĐ</td>
-                    <td><button class="btn"><a href="/xoa-san-pham/@item.Sach.MaSach"> Xóa</a></button></td>
+                    <td><a type="button" href="/xoa-san-pham/@item.Sach.MaSach"> Xóa</a></td>
 
                 </tr>
 
@@ -53,7 +54,6 @@
     <button id="btnContinue" class="btn"><a style="text-decoration: none" href="sua-gio-hang" > Chỉnh Sửa Giỏ Hàng</a></button>
     <button id="btnUpdate" class="btn"><a style="text-decoration: none" href="/" >Tiếp Tục Mua Hàng</a></button>
     <button id="btnDeleteAll" class="btn"><a style="text-decoration: none" href="/xoa-gio-hang">Xoá giỏ hàng</a></button>
-
     <button id="btnPayment" class="btn" ><a  style="text-decoration: none" href="@Url.Action("DatHang","Cart")">Thanh toán</a></button>
 
 }

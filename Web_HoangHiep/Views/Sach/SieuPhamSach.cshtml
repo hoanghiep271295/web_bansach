@@ -6,7 +6,7 @@
 {
     <div class="chain-grid menu-chain">
         <a style="text-decoration: none;" href="@Url.Action("ChiTietSP","Sach",new {@id=item.MaSach })">
-        <img class="img-responsive chain" src="@Url.Content(item.AnhBia)" alt="" width="280" height=""/></a>
+        <img class="img-responsive chain" src="@Url.Content(item.AnhBia)" alt="" width="280" height="auto"/></a>
         <div class="grid-chain-bottom chain-watch" style="text-align:center">
             <span class="actual dolor-left-grid"> @(item.GiaBan.HasValue ? item.GiaBan.Value.ToString("N0") : "Liên Hệ") VND</span>
             <h6><a href="single.html">@item.TenSach</a></h6>
