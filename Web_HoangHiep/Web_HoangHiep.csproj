@@ -225,6 +225,8 @@
     <Content Include="AssetsClient\js\jquery.flexisel.js" />
     <Content Include="AssetsClient\js\jquery.min.js" />
     <Content Include="AssetsClient\js\jquery.wmuSlider.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSSAdmin\SachAD.css" />
@@ -327,10 +329,6 @@
     <Content Include="HinhAnhSP\92.jpg" />
     <Content Include="HinhAnhSP\93.jpg" />
     <Content Include="HinhAnhSP\94.jpg" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\LayOut\Admin_LayOut.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangAD\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangAD\Add.cshtml" />
@@ -353,12 +351,21 @@
     <Content Include="Areas\Admin\Views\HoaDonAD\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonAD\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietDonHangAD\Index.cshtml" />
-    <None Include="scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="scripts\jquery-1.10.2.js" />
-    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="HinhAnhSP\95.jpg" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-3.2.1.js" />
+    <Content Include="scripts\jquery-3.2.1.min.js" />
+    <Content Include="scripts\jquery-3.2.1.slim.js" />
+    <Content Include="scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -437,7 +444,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\LayOutClient\LayOutClient.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\SlideBarLeft.cshtml" />
@@ -459,6 +465,8 @@
     <Content Include="Views\LoginKH\Login.cshtml" />
     <Content Include="Views\Cart\SuaGioHang.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="scripts\jquery-3.2.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

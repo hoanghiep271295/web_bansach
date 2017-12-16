@@ -51,4 +51,3 @@ E:\Ky 9\BachNgocToan\Web_HoangHiep\Web_HoangHiep\bin\System.Web.Helpers.xml
 E:\Ky 9\BachNgocToan\Web_HoangHiep\Web_HoangHiep\bin\System.Web.Mvc.xml
 E:\Ky 9\BachNgocToan\Web_HoangHiep\Web_HoangHiep\obj\Debug\Web_HoangHiep.dll
 E:\Ky 9\BachNgocToan\Web_HoangHiep\Web_HoangHiep\obj\Debug\Web_HoangHiep.pdb
-E:\Ky 9\BachNgocToan\Web_HoangHiep\Web_HoangHiep\obj\Debug\Web_HoangHiep.csprojResolveAssemblyReference.cache

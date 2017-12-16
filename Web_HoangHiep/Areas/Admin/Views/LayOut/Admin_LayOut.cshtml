@@ -18,9 +18,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <link href="~/Areas/AssetAdmin/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js-->
-    <script src="~/Areas/AssetAdmin/js/jquery-1.11.1.min.js"></script>
-    <script src="~/Areas/AssetAdmin/js/jquery-1.11.1.min.js"></script>
+    @*<script src="~/Areas/AssetAdmin/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Areas/AssetAdmin/js/jquery-1.11.1.min.js"></script>*@
+    <script src="~/scripts/jquery-3.2.1.min.js"></script>
+
     <script src="~/Areas/AssetAdmin/js/modernizr.custom.js"></script>
+
+
     <!--webfonts-->
     <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!--//webfonts-->
@@ -37,13 +41,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <link href="~/Areas/AssetAdmin/css/custom.css" rel="stylesheet">
     <!--//Metis Menu -->
 </head>
-@*skin-green sidebar-mini sidebar-collapse*@
-<body class="cbp-spmenu-push sidebar-mini sidebar-collapse">
+<body class="cbp-spmenu-push cbp-spmenu-push-toright">
     <div class="main-content">
         <!--left-fixed -navigation-->
         <div class="sidebar" role="navigation">
             <div class="navbar-collapse">
-                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="index.html"><i class="@Url.Action("Index","TrangChu")"></i>Home</a>
@@ -128,7 +131,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!--left-fixed -navigation-->
         <!-- header-starts -->
-        <div class="sticky-header header-section ">
+        @*<div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
                 <button id="showLeftPush"><i class="fa fa-bars"></i></button>
@@ -337,7 +340,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
-        </div>
+        </div>*@
         <!-- //header-ends -->
         <!-- main content start-->
         <div id="page-wrapper">
@@ -358,9 +361,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <!--footer-->
-        <div class="footer">
+        @*<div class="footer">
             <p>&copy; 2016 Novus Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
-        </div>
+        </div>*@
         <!--//footer-->
     </div>
     <!-- Classie -->
@@ -370,12 +373,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
 
-			showLeftPush.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				disableOther( 'showLeftPush' );
-			};
+			//showLeftPush.onclick = function() {
+			//	classie.toggle( this, 'active' );
+			//	classie.toggle( body, 'cbp-spmenu-push-toright' );
+			//	classie.toggle( menuLeft, 'cbp-spmenu-open' );
+			//	disableOther( 'showLeftPush' );
+			//};
 
 			function disableOther( button ) {
 				if( button !== 'showLeftPush' ) {
@@ -385,12 +388,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </script>
     <!--scrolling js-->
     <script src="~/Areas/AssetAdmin/js/jquery.nicescroll.js"></script>
-    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
-
-
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
     <!--//scrolling js-->
-
     <!-- Bootstrap Core JavaScript -->
-    <script src="~/Areas/AssetAdmin/js/bootstrap.js"> </script>
+    <script src="~/scripts/bootstrap.js"></script>
 </body>
 </html>
