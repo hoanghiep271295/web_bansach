@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using PagedList;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Web_HoangHiep.Dao_Client;
 using Web_HoangHiep.Models;
-using PagedList;
-
 
 namespace Web_HoangHiep.Controllers
 {
@@ -14,11 +14,12 @@ namespace Web_HoangHiep.Controllers
         {
             return View();
         }
+
         public ActionResult SachTheoNXB(int manxb, int? page)
         {
             int pagesize = 9;
             var pagecurent = (page ?? 1);
-            IQueryable<Sach> model = new NhaXuatBanDao().SachTheoNXB(manxb);
+            IEnumerable<Sach> model = new NhaXuatBanDao().SachTheoNXB(manxb);
             return View("SachTheoNXB", model.ToPagedList(pagecurent, pagesize));
         }
     }

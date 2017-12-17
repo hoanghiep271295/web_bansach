@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using PagedList;
+﻿using System.Web.Mvc;
+using Web_HoangHiep.Dao_Admin;
 using Web_HoangHiep.Models;
-using Web_HoangHiep.DAO;
 
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
-    public class NhaXuatBanADController : BaseController
+    public class NhaXuatBanADController : Controller
     {
         // GET: Admin/NhaXuatBanAD
 
-      
-        public ActionResult Index(string searchString,int page=1,int pageSize=10)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             if (Session["User"] == null)
             {
@@ -33,8 +27,16 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
+
         [HttpPost]
         public ActionResult Add(NhaXuatBan nxb)
         {
@@ -58,7 +60,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                         int id = dao.Insert(nxb);
                         if (id > 0)
                         {
-                            SetAlert("Thêm Mới Thành Công", "success");
                             return RedirectToAction("Index", "NhaXuatBanAD");
                         }
                         else
@@ -71,12 +72,21 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View("Index");
             }
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            NhaXuatBan nxb = new NhaXuatBanDao().ViewDetails(id);
-            return View(nxb);
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                NhaXuatBan nxb = new NhaXuatBanDao().ViewDetails(id);
+                return View(nxb);
+            }
         }
+
         [HttpPost]
         public ActionResult Edit(NhaXuatBan nxb)
         {
@@ -100,7 +110,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                         var result = dao.Update(nxb);
                         if (result)
                         {
-                            SetAlert("Thêm Mới Thành Công", "success");
                             return RedirectToAction("Index", "NhaXuatBanAD");
                         }
                         else
@@ -112,10 +121,13 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 }
                 return View("Index");
             }
-
         }
-
-        public ActionResult DeleteNXB(int ID)
+        /// <summary>
+        /// Xoá nhà xuất bản
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Delele(int id)
         {
             if (Session["User"] == null)
             {
@@ -123,22 +135,16 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-                var a = new NhaXuatBanDao().Delete(ID);
-
-                return RedirectToAction("Index");
-            }
-        }
-
-        public ActionResult Delele(int ID)
-        {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-            else
-            {
-                new NhaXuatBanDao().Delete(ID);
-                return RedirectToAction("Index");
+             var dao = new NhaXuatBanDao();
+              if(dao.DeleteNXB(id))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+               
             }
         }
     }

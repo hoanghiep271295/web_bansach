@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Web_HoangHiep.Models;
+
 namespace Web_HoangHiep.Dao_Client
 {
     public class ChiTietDonHangDao
     {
-        MyDBContext db = null;
+        private MyDBContext db = null;
+
         public ChiTietDonHangDao()
         {
             db = new MyDBContext();
         }
-        public bool Insert(ChiTietDonHang chitiet)           
+
+        public bool Insert(ChiTietDonHang chitiet)
         {
             try
             {
@@ -20,8 +20,9 @@ namespace Web_HoangHiep.Dao_Client
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                Console.WriteLine("Error here" + ex.Message);
                 return false;
             }
         }

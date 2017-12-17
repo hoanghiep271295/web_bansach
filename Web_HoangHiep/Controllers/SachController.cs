@@ -9,26 +9,27 @@ namespace Web_HoangHiep.Controllers
     public class SachController : Controller
     {
         // GET: Sach
-       
+
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult NewProduct( int? page )
+
+        public ActionResult NewProduct(int? page)
         {
             int pagecurent = (page ?? 1);
             int pageSize = 9;
             var dao = new SachDao();
             List<Sach> model = dao.ListSachMoi();
-            return View(model.ToPagedList(pagecurent,pageSize));
+            return View(model.ToPagedList(pagecurent, pageSize));
         }
-        public ActionResult ListAllProduct(int page=1,int pagesize=9)
+
+        public ActionResult ListAllProduct(int page = 1, int pagesize = 9)
         {
             var model = new SachDao().ListAllSach(page, pagesize);
             return View(model);
         }
-         
-  
+
         public ActionResult ChiTietSP(int id)
         {
             ViewBag.RelateProduct = new SachDao().ListRelate(id);
@@ -43,11 +44,9 @@ namespace Web_HoangHiep.Controllers
             return PartialView(model);
         }
 
-
         public ActionResult ProductCatelogy()
         {
             return View();
         }
-
     }
 }

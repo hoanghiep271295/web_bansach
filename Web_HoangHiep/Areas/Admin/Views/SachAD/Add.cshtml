@@ -11,7 +11,7 @@
 
 
 @section Header{
-    Them Moi Sach
+  Thêm mới sản phẩm
 }
 
 @using (Html.BeginForm("Add", "SachAD", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -24,7 +24,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
      
         <div class="form-group">
-            @Html.LabelFor(model => model.TenSach, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Tên sách", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })
@@ -32,18 +32,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Giá bán", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })*@
-
                 <input name="GiaBan" type="number" class="form-control" />
             </div>
 
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
@@ -51,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AnhBia, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ảnh bìa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="fileUpload">
                 @ViewBag.ThongBao
@@ -59,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NgayCapNhat, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ngày cập nhật", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NgayCapNhat, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NgayCapNhat, "", new { @class = "text-danger" })
@@ -67,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SoLuongTon, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Số lượng tồn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
@@ -75,16 +72,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MaNXB, "MaNXB", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Nhà xuất bản", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.DropDownListFor(model => model.MaNXB, (IEnumerable<SelectListItem>)@ViewBag.ChuDe, htmlAttributes: new { @class = "form-control" })*@
                 @Html.DropDownList("MaChuDe")
 
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MaChuDe, "MaChuDe", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Chủ Đề", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MaNXB")
 
@@ -93,19 +89,21 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Moi, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Loại sách", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select name="Moi" class="form-control">
                     <option value="True">Mới</option>
                     <option value="False">Cũ</option>
-
                 </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" value="Save" class="btn btn-success btn-md">
+                    <span class="glyphicon glyphicon-folder-open"></span>&nbsp; Save
+                </button>
+
             </div>
         </div>
     </div>

@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Web_HoangHiep.Areas.Admin.Models
 {
+    [Serializable]
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Mời nhập tài khoản")]
         public string UserName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="Mời nhập password")]
         public string Password { get; set; }
         [Required]
         public bool RememberMe { get; set; }

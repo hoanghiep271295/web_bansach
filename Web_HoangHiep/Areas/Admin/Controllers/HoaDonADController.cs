@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using PagedList;
-using PagedList.Mvc;
-using Web_HoangHiep.DAO;
+﻿using System.Web.Mvc;
+using Web_HoangHiep.Dao_Admin;
 using Web_HoangHiep.Models;
 
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
-    public class HoaDonADController : BaseController
+    public class HoaDonADController : Controller
     {
         // GET: Admin/HoaDonAD
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
@@ -28,12 +22,21 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
         [HttpGet]
         public ActionResult Edit(int madonhang)
         {
-            DonHang donhang = new HoaDonDao().ViewDetails( madonhang);
-            return View(donhang);
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                DonHang donhang = new HoaDonDao().ViewDetails(madonhang);
+                return View(donhang);
+            }
         }
+
         [HttpPost]
         public ActionResult Edit(DonHang donhang)
         {
@@ -49,7 +52,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                     var result = dao.Update(donhang);
                     if (result)
                     {
-                        SetAlert("Thêm Mới Thành Công", "success");
                         return RedirectToAction("Index", "HoaDonAD");
                     }
                     else
@@ -61,8 +63,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
 
                 return View("Index");
             }
-
         }
-
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Web_HoangHiep.Models.LoginModelClient
 {
@@ -10,11 +6,13 @@ namespace Web_HoangHiep.Models.LoginModelClient
     {
         [Required]
         [Key]
-        [Display(Name ="Tài Khoản")]
+        [Display(Name = "Tài Khoản")]
         public string taikhoan { set; get; }
+
         [Required]
-        [Display(Name ="Mật Khẩu")]
+        [Display(Name = "Mật Khẩu")]
         public string password { get; set; }
+
         [Required]
         public bool RememberMe { get; set; }
     }

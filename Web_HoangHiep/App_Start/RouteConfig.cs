@@ -20,11 +20,11 @@ namespace Web_HoangHiep
              namespaces: new[] { "Web_HoangHiep.Controllers" }
         );
             routes.MapRoute(
-      name: "Tim Kiem",
-      url: "tim-kiem",
-      defaults: new { controller = "Search", action = "Search", id = UrlParameter.Optional },
-      namespaces: new[] { "Web_HoangHiep.Controllers" }
- );
+                          name: "Tim Kiem",
+                          url: "tim-kiem",
+                          defaults: new { controller = "Search", action = "Search", id = UrlParameter.Optional },
+                          namespaces: new[] { "Web_HoangHiep.Controllers" }
+                     );
 
                             routes.MapRoute(
                 name: "Dang Xuat",

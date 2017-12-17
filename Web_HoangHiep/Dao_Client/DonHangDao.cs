@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Web_HoangHiep.Models;
 
 namespace Web_HoangHiep.Dao_Client
 {
     public class DonHangDao
     {
-        MyDBContext db = null;
+        private MyDBContext db = null;
+
         public DonHangDao()
         {
-
             db = new MyDBContext();
         }
+
         public bool Insert(DonHang donhang)
         {
             try
@@ -26,10 +24,9 @@ namespace Web_HoangHiep.Dao_Client
             {
                 return false;
             }
-
-  
         }
-        public bool FindKhachHang(string name,string email)
+
+        public bool FindKhachHang(string name, string email)
         {
             var khachhang = db.KhachHangs.SingleOrDefault(x => x.TenKhachHang == name && x.Email == email);
             if (khachhang == null)

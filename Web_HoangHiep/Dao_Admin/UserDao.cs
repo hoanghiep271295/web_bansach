@@ -1,17 +1,15 @@
-﻿using System;
+﻿using PagedList;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Web_HoangHiep.Models;
-using PagedList;
-using PagedList.Mvc;
 
-namespace Web_HoangHiep.DAO
+namespace Web_HoangHiep.Dao_Admin
 {
     public class UserDao
     {
-        MyDBContext db = null;
-        public UserDao ()
+        private MyDBContext db = null;
+
+        public UserDao()
         {
             db = new MyDBContext();
         }
@@ -26,17 +24,15 @@ namespace Web_HoangHiep.DAO
             return model.OrderBy(n => n.ID).ToPagedList(page, pageSize);
         }
 
-
         public int Insert(User model)
         {
             db.Users.Add(model);
             db.SaveChanges();
             return model.ID;
-
         }
+
         public bool Update(User entity)
         {
-
             var model = db.Users.Find(entity.ID);
             model.UserName = entity.UserName;
             model.Password = entity.Password;
@@ -44,10 +40,12 @@ namespace Web_HoangHiep.DAO
             db.SaveChanges();
             return true;
         }
-        public User getUser(string username,string password)
+
+        public User getUser(string username, string password)
         {
             return db.Users.SingleOrDefault(n => n.UserName == username && n.Password == password);
         }
+
         public bool CheckLogin(string username)
         {
             User user = db.Users.SingleOrDefault(n => n.UserName == username);
@@ -57,21 +55,19 @@ namespace Web_HoangHiep.DAO
             }
             else
                 return false;
-
         }
-   
+
         public User ViewDeatis(int id)
         {
             return db.Users.Find(id);
         }
 
-        public int Login(string UserName,string Password)
+        public int Login(string UserName, string Password)
         {
-            var result = db.Users.SingleOrDefault(n => n.UserName == UserName );
+            var result = db.Users.SingleOrDefault(n => n.UserName == UserName);
             if (result == null)
             {
                 return 0;
-
             }
             else
             {
@@ -81,14 +77,15 @@ namespace Web_HoangHiep.DAO
                     return -1;
             }
         }
+
         public void Delete(int id)
         {
             User model = db.Users.Find(id);
             db.Users.Remove(model);
             db.SaveChanges();
-
         }
-       public bool CheckUser(string name,string email)
+
+        public bool CheckUser(string name, string email)
         {
             var model = db.Users.SingleOrDefault(n => n.UserName == name && n.Email == email);
 

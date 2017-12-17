@@ -1,19 +1,20 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Web_HoangHiep.Models;
-using PagedList;
-using PagedList.Mvc;
-namespace Web_HoangHiep.DAO
+
+namespace Web_HoangHiep.Dao_Admin
 {
     public class HoaDonDao
     {
-        MyDBContext db = null;
+        private MyDBContext db = null;
+
         public HoaDonDao()
         {
             db = new MyDBContext();
         }
+
         public IEnumerable<DonHang> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<DonHang> model = db.DonHangs;
@@ -24,7 +25,6 @@ namespace Web_HoangHiep.DAO
             return model.OrderBy(n => n.MaDonHang).ToPagedList(page, pageSize);
         }
 
-
         public bool Update(DonHang entity)
         {
             try
@@ -34,23 +34,20 @@ namespace Web_HoangHiep.DAO
                 donhang.NgayGiaoHang = entity.NgayGiaoHang;
                 donhang.DaThanhToan = entity.DaThanhToan;
                 donhang.TinhTrangGiaoHang = entity.TinhTrangGiaoHang;
-            
+
                 db.SaveChanges();
                 return true;
-
             }
             catch (Exception ex)
             {
                 Console.Write("Loi" + ex.Message + "dang xay ra");
                 return false;
-
             }
         }
 
         public DonHang ViewDetails(int madonhang)
         {
-            return db.DonHangs.Find( madonhang);
-
+            return db.DonHangs.Find(madonhang);
         }
     }
 }

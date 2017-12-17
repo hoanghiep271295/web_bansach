@@ -5,41 +5,29 @@
 }
 @section Header
 {
-<script>
-    $('#page-wrapper').css({"padding-top": "3em 3em 2.5em"});
-</script>
+    <script>
+        $('#page-wrapper').css({ "padding-top": "3em 3em 2.5em" });
+    </script>
 }
 <div class="main-page login-page ">
 
     <h3 class="title1">Đăng nhập</h3>
     <div class="widget-shadow">
         <div class="login-top">
-            <h4>Đăng kí tài khoản Admin <a href="@Url.Action("SingIn","User")"> Đăng kí »</a> </h4>
+            <h4>Chưa có tài khoản ? &nbsp; <a href="@Url.Action("SingIn","User")"> Đăng kí »</a> </h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         </div>
         <div class="login-body">
             @using (Html.BeginForm("Login", "login", FormMethod.Post))
             {
 
-                @Html.TextBoxFor(model => model.UserName, new { @class = "user", @autofocus = "autofocus", @placeholder = "Nhập Tên Đăng Nhập",@value="@ViewBag.UserName" } )
+                @Html.TextBoxFor(model => model.UserName, new { @class = "user", @autofocus = "autofocus", @placeholder = "Nhập Tên Đăng Nhập", @value = "@ViewBag.UserName" })
 
-
-                @Html.PasswordFor(model => model.Password,  new { @class = "lock", @placeholder =  "Nhập Mật Khẩu "})
+                @Html.PasswordFor(model => model.Password, new { @class = "lock", @placeholder = "Nhập Mật Khẩu " })
 
                 <input type="submit" name="Sign In" value="Đăng Nhập">
 
             }
         </div>
-
     </div>
-
-    <div class="login-page-bottom">
-
-
-    </div>
-    </div>
-<style>
-    ul{
-        list-style:none;
-    }
-    </style>
+</div>

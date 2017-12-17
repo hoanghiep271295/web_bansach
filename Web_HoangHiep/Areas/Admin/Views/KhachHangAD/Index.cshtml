@@ -67,11 +67,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DienThoai)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaKhacHang }) |
-
-                    @Html.ActionLink("Delete", "Delele", new { id = item.MaKhacHang }) 
-
+                <td style="text-align: center">
+                    <a href="@Url.Action("Edit", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-edit"></i></a>
+                    &nbsp;
+                    <a href="@Url.Action("Delete", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-trash"></i></a>
                 </td>
             </tr>
         }

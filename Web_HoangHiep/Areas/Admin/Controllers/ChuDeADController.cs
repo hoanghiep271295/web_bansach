@@ -4,9 +4,9 @@ using Web_HoangHiep.Models;
 
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
-    public class TacGiaADController : Controller
+    public class ChuDeADController : Controller
     {
-        // GET: Admin/TacGiaAD
+        // GET: Admin/ChuDeAD
 
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
@@ -16,10 +16,9 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-                var dao = new TacGiaDao();
+                var dao = new ChuDeDao();
                 ViewBag.SearchString = searchString;
                 var model = dao.ListAllPaging(searchString, page, pageSize);
-
                 return View(model);
             }
         }
@@ -38,7 +37,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(TacGia tacgia)
+        public ActionResult Add(ChuDe chude)
         {
             if (Session["User"] == null)
             {
@@ -46,21 +45,21 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-                var model = new TacGiaDao().CheckTacGia(tacgia.TenTacGia, tacgia.Email);
+                var model = new ChuDeDao().CheckChuDe(chude.TenChuDe);
                 if (model == false)
                 {
-                    ModelState.AddModelError("", "Tác Giả Này Đã Tồn Tại");
+                    ModelState.AddModelError("", "Nhà Xuất Bản Này Đã Có ");
                     return View("Add");
                 }
                 else
                 {
                     if (ModelState.IsValid)
                     {
-                        var dao = new TacGiaDao();
-                        int id = dao.Insert(tacgia);
+                        var dao = new ChuDeDao();
+                        int id = dao.Insert(chude);
                         if (id > 0)
                         {
-                            return RedirectToAction("Index", "TacGiaAD");
+                            return RedirectToAction("Index", "ChudeAD");
                         }
                         else
                         {
@@ -82,13 +81,13 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-                var nxb = new TacGiaDao().ViewDetails(id);
-                return View(nxb);
+                ChuDe chude = new ChuDeDao().ViewDetails(id);
+                return View(chude);
             }
         }
 
         [HttpPost]
-        public ActionResult Edit(TacGia tacgia)
+        public ActionResult Edit(ChuDe chude)
         {
             if (Session["User"] == null)
             {
@@ -96,21 +95,21 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-                var model = new TacGiaDao().CheckTacGia(tacgia.TenTacGia, tacgia.Email);
+                var model = new ChuDeDao().CheckChuDe(chude.TenChuDe);
                 if (model == false)
                 {
-                    ModelState.AddModelError("", "Tác Giả Này Đã Tồn Tại");
+                    ModelState.AddModelError("", "Nhà Xuất Bản Đã Có");
                     return View("Edit");
                 }
                 else
                 {
                     if (ModelState.IsValid)
                     {
-                        var dao = new TacGiaDao();
-                        var result = dao.Update(tacgia);
+                        var dao = new ChuDeDao();
+                        var result = dao.Update(chude);
                         if (result)
                         {
-                            return RedirectToAction("Index", "TacGiaAD");
+                            return RedirectToAction("Index", "ChuDeAD");
                         }
                         else
                         {
@@ -118,12 +117,17 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                             return View("Edit");
                         }
                     }
-                    return View("Index");
                 }
+                return View("Index");
             }
         }
 
-        public ActionResult Delete(int ID)
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Delele(int id)
         {
             if (Session["User"] == null)
             {
@@ -131,24 +135,18 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-                new TacGiaDao().Delete(ID);
+                var dao = new ChuDeDao();
+                if (dao.DeleteChuDe(id))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
 
-                return RedirectToAction("Index");
-            }
-        }
+                    ModelState.AddModelError("", "Tài Khoản Chưa Tồn Tại !!");
+                    return RedirectToAction("Index");
+                }
 
-        [HttpDelete]
-        public ActionResult Delele(int ID)
-        {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-            else
-            {
-                new TacGiaDao().Delete(ID);
-
-                return RedirectToAction("Index");
             }
         }
     }

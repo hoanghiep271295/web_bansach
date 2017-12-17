@@ -36,7 +36,7 @@
         <tr>
             <th>Tên Tác Giả</th>
             <th>Điện Thoại</th>
-            <th>Tiểu Sử</th>
+
             <th>Địa Chỉ</th>
             <th>Email</th>
             <th>Chức Năng</th>
@@ -52,9 +52,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.DienThoai)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TieuSu)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.DiaChi)
         </td>
@@ -62,11 +60,10 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.MaTacGia }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.MaTacGia })
-
-
+        <td style="text-align: center">
+            <a href="@Url.Action("Edit", "TacGiaAD", new { id = item.MaTacGia })"><i class="glyphicon glyphicon-edit"></i></a>
+            &nbsp;
+            <a href="@Url.Action("Delete", "TacGiaAD", new { id = item.MaTacGia })"><i class="glyphicon glyphicon-trash"></i></a>
         </td>
 
     </tr>

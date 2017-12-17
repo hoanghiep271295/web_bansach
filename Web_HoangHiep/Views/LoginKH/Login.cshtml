@@ -7,7 +7,7 @@
 
 <div class="alert alert-success" style="width:100%;text-align:center;margin-top:20px;"><h2>Đăng Nhập Khách Hàng</h2></div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Login","LoginKH",FormMethod.Get)) 
 {
     @Html.AntiForgeryToken()
     

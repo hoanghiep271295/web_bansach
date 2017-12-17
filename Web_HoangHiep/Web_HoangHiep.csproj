@@ -142,11 +142,14 @@
     <Content Include="Areas\AssetAdmin\css\font-awesome.css" />
     <Content Include="Areas\AssetAdmin\css\jqvmap.css" />
     <Content Include="Areas\AssetAdmin\css\style.css" />
+    <Content Include="Areas\AssetAdmin\images\a.png" />
+    <Content Include="Areas\AssetAdmin\images\favicon.ico" />
     <Content Include="Areas\AssetAdmin\js\bootstrap.js" />
     <Content Include="Areas\AssetAdmin\js\Chart.js" />
     <Content Include="Areas\AssetAdmin\js\classie.js" />
     <Content Include="Areas\AssetAdmin\js\clndr.js" />
     <Content Include="Areas\AssetAdmin\js\custom.js" />
+    <Content Include="scripts\Inform\Inform.js" />
     <Content Include="Areas\AssetAdmin\js\jquery-1.11.1.min.js" />
     <Content Include="Areas\AssetAdmin\js\jquery.circlechart.js" />
     <Content Include="Areas\AssetAdmin\js\jquery.min.js" />
@@ -356,6 +359,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\ChuDeAD\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChuDeAD\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ChuDeAD\Edit.cshtml" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="HinhAnhSP\95.jpg" />
     <Content Include="scripts\bootstrap.js" />
@@ -373,8 +379,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietDonHangADController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChuDeADController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonADController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangADController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
@@ -394,21 +400,21 @@
     <Compile Include="Controllers\SachController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TacGiaController.cs" />
-    <Compile Include="DAO\ChiTietDonHangDao.cs" />
-    <Compile Include="DAO\ChuDeDao.cs" />
-    <Compile Include="DAO\HoaDonDao.cs" />
-    <Compile Include="DAO\KhachHangDao.cs" />
-    <Compile Include="DAO\LoginDao.cs" />
-    <Compile Include="DAO\NhaXuatBanDao.cs" />
-    <Compile Include="DAO\SachDao.cs" />
-    <Compile Include="DAO\TacGiaDao.cs" />
-    <Compile Include="DAO\UserDao.cs" />
+    <Compile Include="Dao_Admin\ChiTietDonHangDao.cs" />
+    <Compile Include="Dao_Admin\ChuDeDao.cs" />
+    <Compile Include="Dao_Admin\HoaDonDao.cs" />
+    <Compile Include="Dao_Admin\KhachHangDao.cs" />
+    <Compile Include="Dao_Admin\LoginDao.cs" />
+    <Compile Include="Dao_Admin\NhaXuatBanDao.cs" />
+    <Compile Include="Dao_Admin\SachDao.cs" />
+    <Compile Include="Dao_Admin\TacGiaDao.cs" />
+    <Compile Include="Dao_Admin\UserDao.cs" />
     <Compile Include="Dao_Client\ChiTietDonHangDao.cs" />
     <Compile Include="Dao_Client\ChuDeDao.cs" />
     <Compile Include="Dao_Client\DonHangDao.cs" />
     <Compile Include="Dao_Client\KhachhangDao.cs" />
     <Compile Include="Dao_Client\LoginDaoClient.cs" />
-    <Compile Include="Dao_Client\NhatXuatBanDao.cs" />
+    <Compile Include="Dao_Client\NhaXuatBanDao.cs" />
     <Compile Include="Dao_Client\QuanLySachDao.cs" />
     <Compile Include="Dao_Client\SachDao.cs" />
     <Compile Include="Dao_Client\SearchDao.cs" />
@@ -424,7 +430,7 @@
     <Compile Include="Models\LoginModelClient\LoginModelClient.cs" />
     <Compile Include="Models\LoginModelClient\ProductViewModel.cs" />
     <Compile Include="Models\MyDBContext.cs" />
-    <Compile Include="Models\NhaXuaBan.cs" />
+    <Compile Include="Models\NhaXuatBan.cs" />
     <Compile Include="Models\Sach.cs" />
     <Compile Include="Models\TacGia.cs" />
     <Compile Include="Models\ThamGia.cs" />
@@ -476,9 +482,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Areas\AssetAdmin\fonts\" />
-    <Folder Include="Areas\AssetAdmin\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

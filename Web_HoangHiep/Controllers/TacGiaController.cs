@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PagedList;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PagedList;
-using PagedList.Mvc;
 using Web_HoangHiep.Dao_Client;
 using Web_HoangHiep.Models;
 
@@ -17,12 +13,13 @@ namespace Web_HoangHiep.Controllers
         {
             return View();
         }
+
         public ActionResult ViewDetails(int matacgia)
         {
-
             var model = new TacGiaDao().ViewDetails(matacgia);
             return View(model);
         }
+
         public ActionResult SachTheoTacGia(int matacgia, int? page)
         {
             int pagesize = 9;

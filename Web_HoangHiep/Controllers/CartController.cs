@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Web_HoangHiep.Models;
-using System.Web.Script.Serialization;
 using Web_HoangHiep.CommonSession;
 using Web_HoangHiep.Dao_Client;
+using Web_HoangHiep.Models;
 
 namespace Web_HoangHiep.Controllers
 {
@@ -15,6 +13,7 @@ namespace Web_HoangHiep.Controllers
         #region Giỏ Hàng
 
         private const string CartSession = "CartSession";
+
         // GET: Cart
         public ActionResult Index()
         {
@@ -26,16 +25,6 @@ namespace Web_HoangHiep.Controllers
             }
             return View(list);
         }
-
-
-        //public JsonResult DeleteAll()
-        //{
-        //    Session[SessionCommand.SessionGioHang] = null;
-        //    return Json(new
-        //    {
-        //        status = true
-        //    });
-        //}
         public ActionResult DeleteAll()
         {
             Session[SessionCommand.SessionGioHang] = null;
@@ -56,9 +45,8 @@ namespace Web_HoangHiep.Controllers
                     {
                         if (item.Sach.MaSach == masach)
                         {
-                           item.SoLuong = int.Parse(f["SoLuong"].ToString());
+                            item.SoLuong = int.Parse(f["SoLuong"].ToString());
                         }
-
                     }
                 }
                 else
@@ -74,33 +62,26 @@ namespace Web_HoangHiep.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
-
         }
 
         [HttpGet]
         public ActionResult SuaGioHang()
         {
-
             var cart = Session[SessionCommand.SessionGioHang];
             var list = new List<CartItem>();
             if (cart != null)
             {
                 list = (List<CartItem>)cart;
-
             }
             return View(list);
         }
 
-
-
         public ActionResult XoaTungSP(int masach)
         {
-
             //if (lstGioHang != null)
             //{
             //    iTongSoLuong = lstGioHang.Sum(n => n.iSoLuong);
             //}
-
 
             var model = new SachDao().CheckSack(masach);
             if (model == false)
@@ -111,15 +92,13 @@ namespace Web_HoangHiep.Controllers
 
             var sessionCart = (List<CartItem>)Session[SessionCommand.SessionGioHang];
             CartItem cart = sessionCart.SingleOrDefault(n => n.Sach.MaSach == masach);
-            
+
             if (cart != null)
             {
                 sessionCart.RemoveAll(x => x.Sach.MaSach == masach);
                 Session[SessionCommand.SessionGioHang] = sessionCart;
-         
             }
             return RedirectToAction("Index");
-
         }
 
         public ActionResult XoaGioHang()
@@ -130,7 +109,6 @@ namespace Web_HoangHiep.Controllers
 
         public ActionResult AddItem(int productId, int quantity, string url)
         {
-
             var model = new SachDao().ViewDetails(productId);
             var cartSession = Session[SessionCommand.SessionGioHang];
 
@@ -145,7 +123,6 @@ namespace Web_HoangHiep.Controllers
                         {
                             item.SoLuong = item.SoLuong + quantity;
                         }
-
                     }
                 }
                 else
@@ -158,7 +135,6 @@ namespace Web_HoangHiep.Controllers
 
                 //Gan vao Session
                 Session[SessionCommand.SessionGioHang] = list;
-
             }
             else
             {
@@ -173,6 +149,7 @@ namespace Web_HoangHiep.Controllers
             }
             return Redirect(url);
         }
+
         //[HttpGet]
         //public ActionResult Payment()
         //{
@@ -188,8 +165,6 @@ namespace Web_HoangHiep.Controllers
         //[HttpPost]
         //public ActionResult Payment(string shipName, string mobile, string address, string email)
         //{
-
-
         //    var donhang = new DonHang();
         //    donhang.NgayDatHang = DateTime.Now;
         //    donhang.KhachHang.DiaChi = address;
@@ -198,7 +173,6 @@ namespace Web_HoangHiep.Controllers
         //    donhang.KhachHang.TenKhachHang = shipName;
         //    try
         //    {
-
         //        var id = new DonHangDao().Insert(donhang);
         //        var cart = (List<CartItem>)Session[SessionCommand.SessionGioHang];
 
@@ -226,10 +200,10 @@ namespace Web_HoangHiep.Controllers
             return View();
         }
 
-
-        #endregion
+        #endregion Giỏ Hàng
 
         #region Đặt Hàng
+
         public List<CartItem> LayGiohang()
         {
             List<CartItem> listgiohang = Session[SessionCommand.SessionGioHang] as List<CartItem>;
@@ -242,14 +216,13 @@ namespace Web_HoangHiep.Controllers
             return listgiohang;
         }
 
-
         public ActionResult DatHang()
         {
-            if (Session["KhachHang"] == null|| Session["KhachHang"].ToString()=="")
+            if (Session["KhachHang"] == null || Session["KhachHang"].ToString() == "")
             {
                 return RedirectToAction("Login", "LoginKH");
             }
-            if(Session[SessionCommand.SessionGioHang]==null)
+            if (Session[SessionCommand.SessionGioHang] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -262,7 +235,7 @@ namespace Web_HoangHiep.Controllers
 
             new DonHangDao().Insert(ddh);
 
-            foreach(var item in giohang)
+            foreach (var item in giohang)
             {
                 ChiTietDonHang ctdh = new ChiTietDonHang();
                 ctdh.MaDonHang = ddh.MaDonHang;
@@ -272,8 +245,9 @@ namespace Web_HoangHiep.Controllers
                 new ChiTietDonHangDao().Insert(ctdh);
             }
             Session[SessionCommand.SessionGioHang] = null;
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
-        #endregion
+
+        #endregion Đặt Hàng
     }
 }

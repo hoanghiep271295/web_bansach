@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Web.Mvc;
+using Web_HoangHiep.Dao_Admin;
 
-using System.Web;
-using System.Web.Mvc;
-using PagedList;
-using Web_HoangHiep.Models;
-using Web_HoangHiep.DAO;
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
-    public class ChiTietDonHangADController : BaseController
+    public class ChiTietDonHangADController : Controller
     {
         // GET: Admin/ChiTietDonHangAD
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)

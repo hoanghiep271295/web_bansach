@@ -4,7 +4,6 @@ namespace Web_HoangHiep.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Sach")]
     public partial class Sach
@@ -31,6 +30,7 @@ namespace Web_HoangHiep.Models
         public string AnhBia { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime? NgayCapNhat { get; set; }
 
         public int? SoLuongTon { get; set; }

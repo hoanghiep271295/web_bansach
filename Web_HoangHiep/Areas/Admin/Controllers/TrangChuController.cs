@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
@@ -15,8 +11,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            return View();
+            return RedirectToAction("Index","SachAD");
         }
-
     }
 }

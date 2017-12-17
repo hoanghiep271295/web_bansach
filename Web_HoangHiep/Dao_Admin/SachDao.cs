@@ -1,26 +1,27 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using PagedList;
-using PagedList.Mvc;
 using Web_HoangHiep.Models;
 
-namespace Web_HoangHiep.DAO
+namespace Web_HoangHiep.Dao_Admin
 {
     public class SachDao
     {
-        MyDBContext db = null;
+        private MyDBContext db = null;
+
         public SachDao()
         {
             db = new MyDBContext();
         }
+
         public int Insert(Sach sach)
         {
             db.Saches.Add(sach);
             db.SaveChanges();
             return sach.MaSach;
         }
+
         public IEnumerable<Sach> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<Sach> model = db.Saches;
@@ -34,8 +35,8 @@ namespace Web_HoangHiep.DAO
         public Sach getByID(int id)
         {
             return db.Saches.SingleOrDefault(x => x.MaSach == id);
-
         }
+
         public Sach ViewDetails(int id)
         {
             return db.Saches.Find(id);
@@ -56,23 +57,27 @@ namespace Web_HoangHiep.DAO
                 sach.Moi = entity.Moi;
                 db.SaveChanges();
                 return true;
-
             }
             catch (Exception ex)
             {
                 Console.Write(ex.Message);
                 return false;
-
             }
         }
+
         public void Delete(int id)
         {
-
+            try
+            {
                 Sach sach = db.Saches.Find(id);
                 db.Saches.Remove(sach);
                 db.SaveChanges();
- 
-   }
+            }
+            catch (Exception ex)
+            {
+                Console.Write("Loi" + ex.Message + "nay dan xay ra");
+            }
+        }
 
         public bool CheckSach(string tensach)
         {

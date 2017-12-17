@@ -1,4 +1,5 @@
-﻿@model PagedList.IPagedList<Web_HoangHiep.Models.NhaXuatBan>
+﻿
+@model PagedList.IPagedList<Web_HoangHiep.Models.ChuDe>
 @using PagedList.Mvc
 
 
@@ -9,20 +10,19 @@
 
 @section Header
 {
-Quản lý Nhà xuất bản
+    Quản lý Chủ Đề
 }
 
 <div style="float:right">
-    <a class="btn btn-success" href="@Url.Action("Add","NhaXuatBanAD")">Thêm Mới</a>
+    <a class="btn btn-success" href="@Url.Action("Add","ChuDeAD")">Thêm Mới</a>
 </div>
 
 
-@using (Html.BeginForm("Index", "NhaXuatBanAD", FormMethod.Get))
+@using (Html.BeginForm("Index", "ChuDeAD", FormMethod.Get))
 {
     <div class="row " style="margin-bottom:20px;">
         <div class="col-lg-12">
             <div class="col-md-4">
-
                 <input class="form-control" name="searchString" type="text" placeholder="Search..." value="@ViewBag.SearchString">
             </div>
             <div class="col-md-4">
@@ -30,7 +30,6 @@ Quản lý Nhà xuất bản
                     <span class="glyphicon glyphicon-search"></span> Search
                 </button>
             </div>
-          
         </div>
     </div>
 }
@@ -38,30 +37,23 @@ Quản lý Nhà xuất bản
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th style="text-align: center">Tên Nhà Xuất Bản</th>
-            <th style="text-align: center">Địa Chỉ</th>
-            <th style="text-align: center">Điện Thoại</th>
+            <th style="text-align: center">Tên Chủ đề</th>
             <th style="text-align: center">Chức Năng</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-      
+
             <tr>
                 <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.TenNXB)
+                    @Html.DisplayFor(modelItem => item.TenChuDe)
                 </td>
+              
                 <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.DiaChi)
-                </td>
-                <td style="text-align: center">
-                    @Html.DisplayFor(modelItem => item.DienThoai)
-                </td>
-                <td style="text-align: center" >
-                   <a href="@Url.Action("Edit", "NhaXuatBanAD", new { id = item.MaNXB })" ><i class="glyphicon glyphicon-edit" ></i></a>
-                    &nbsp; 
-                   <a href="@Url.Action("Delete", "NhaXuatBanAD", new { id = item.MaNXB })"><i class="glyphicon glyphicon-trash"></i></a> 
+                    <a href="@Url.Action("Edit", "Edit", new { id = item.MaChuDe })"><i class="glyphicon glyphicon-edit"></i></a>
+                    &nbsp;
+                    <a href="@Url.Action("Delete", "Delete", new { id = item.MaChuDe })"><i class="glyphicon glyphicon-trash"></i></a>
                 </td>
             </tr>
         }

@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Web_HoangHiep.DAO;
-using PagedList;
-using PagedList.Mvc;
+using Web_HoangHiep.Dao_Admin;
 using Web_HoangHiep.Models;
-using System.IO;
 
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
-    public class SachADController : BaseController
+    public class SachADController : Controller
     {
-        MyDBContext db = new MyDBContext();
+        private MyDBContext db = new MyDBContext();
         // GET: Admin/SachAD
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
@@ -30,34 +26,43 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        public void SetViewBag(int? select=null)
+
+        public void SetViewBag(int? select = null)
         {
             var dao = new ChuDeDao();
-            ViewBag.ChuDe = new SelectList(dao.listAllChuDe(), "MaChuDe", "TenChuDe",select);
+            ViewBag.ChuDe = new SelectList(dao.listAllChuDe(), "MaChuDe", "TenChuDe", select);
         }
+
         public void SetViewBag2(int? select = null)
         {
             var dao = new NhaXuatBanDao();
-            ViewBag.NhaXuatBan = new SelectList(dao.listAllNXB(), "MaNXB", "TenNXB",select);
+            ViewBag.NhaXuatBan = new SelectList(dao.listAllNXB(), "MaNXB", "TenNXB", select);
         }
 
         [HttpGet]
         public ActionResult Add()
         {
-           
-            ViewBag.MaChuDe = new SelectList(db.ChuDes, "MaChuDe", "TenChuDe");
-            ViewBag.MaNXB = new SelectList(db.NhaXuatBans, "MaNXB", "TenNXB");
-            return View();
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                ViewBag.MaChuDe = new SelectList(db.ChuDes, "MaChuDe", "TenChuDe");
+                ViewBag.MaNXB = new SelectList(db.NhaXuatBans, "MaNXB", "TenNXB");
+                return View();
+            }
         }
 
         [HttpPost]
-        public ActionResult Add(Sach sach,HttpPostedFileBase fileUpload)
+        public ActionResult Add(Sach sach, HttpPostedFileBase fileUpload)
         {
             if (Session["User"] == null)
             {
                 return RedirectToAction("Login", "Login");
             }
-            else {
+            else
+            {
                 ViewBag.MaChuDe = new SelectList(db.ChuDes.OrderBy(n => n.TenChuDe), "MaChuDe", "TenChuDe");
                 ViewBag.MaNXB = new SelectList(db.NhaXuatBans.OrderBy(n => n.MaNXB), "MaNXB", "TenNXB");
 
@@ -98,6 +103,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View("Index");
             }
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -111,10 +117,10 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 var sach = db.Saches.Find(id);
                 ViewBag.MaChuDe = new SelectList(db.ChuDes.OrderBy(n => n.TenChuDe), "MaChuDe", "TenChuDe", sach.MaChuDe);
                 ViewBag.MaNXB = new SelectList(db.NhaXuatBans.OrderBy(n => n.MaNXB), "MaNXB", "TenNXB", sach.MaNXB);
-                //var sach = new SachDao().ViewDetails(id);
                 return View(sach);
             }
         }
+
         [HttpPost]
         public ActionResult Edit(Sach sach)
         {
@@ -127,7 +133,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 ViewBag.MaChuDe = new SelectList(db.ChuDes.OrderBy(n => n.TenChuDe), "MaChuDe", "TenChuDe", sach.MaChuDe);
                 ViewBag.MaNXB = new SelectList(db.NhaXuatBans.OrderBy(n => n.MaNXB), "MaNXB", "TenNXB", sach.MaNXB);
                 var model = new SachDao().CheckSach(sach.TenSach);
-
 
                 if (ModelState.IsValid)
                 {
@@ -144,13 +149,10 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                         return View("Edit");
                     }
 
-
-
                     //}
                 }
                 return View("Index");
             }
-
         }
 
         public ActionResult Delele(int ID)
@@ -166,6 +168,5 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
         }
-
     }
 }

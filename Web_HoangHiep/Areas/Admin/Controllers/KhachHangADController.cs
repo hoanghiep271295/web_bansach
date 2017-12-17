@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using PagedList;
-using PagedList.Mvc;
+﻿using System.Web.Mvc;
+using Web_HoangHiep.Dao_Admin;
 using Web_HoangHiep.Models;
-using Web_HoangHiep.DAO;
 
 namespace Web_HoangHiep.Areas.Admin.Controllers
 {
-    public class KhachHangADController : BaseController
+    public class KhachHangADController : Controller
     {
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
@@ -30,8 +24,16 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
+
         [HttpPost]
         public ActionResult Add(KhachHang kh)
         {
@@ -44,7 +46,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 var result = new KhachHangDao().CheckKhachHang(kh.TaiKhoan, kh.MatKhau);
                 if (result == false)
                 {
-
                     ModelState.AddModelError("", "Tài Khoản này đã tồn tại");
                     return View("Add");
                 }
@@ -56,7 +57,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                         int id = dao.Insert(kh);
                         if (id > 0)
                         {
-                            SetAlert("Thêm Mới Thành Công", "success");
                             return RedirectToAction("Index", "KhachHangAD");
                         }
                         else
@@ -69,12 +69,14 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View("Index");
             }
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
             var khachhang = new KhachHangDao().ViewDetails(id);
             return View(khachhang);
         }
+
         [HttpPost]
         public ActionResult Edit(KhachHang kh)
         {
@@ -90,7 +92,6 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                     var result = dao.Update(kh);
                     if (result)
                     {
-                        SetAlert("Thêm Mới Thành Công", "success");
                         return RedirectToAction("Index", "KhachHangAD");
                     }
                     else
@@ -102,6 +103,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View("Index");
             }
         }
+
         public ActionResult Delele(int ID)
         {
             if (Session["User"] == null)
@@ -110,12 +112,9 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-
                 new KhachHangDao().Delete(ID);
                 return RedirectToAction("Index");
-
             }
         }
-     
     }
 }

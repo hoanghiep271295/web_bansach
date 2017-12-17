@@ -33,12 +33,16 @@ namespace Web_HoangHiep.Models
         public string DiaChi { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime? NgaySinh { get; set; }
 
         public bool? GioiTinh { get; set; }
 
         [StringLength(50)]
         public string DienThoai { get; set; }
+
+        [StringLength(255)]
+        public string socialID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHang { get; set; }

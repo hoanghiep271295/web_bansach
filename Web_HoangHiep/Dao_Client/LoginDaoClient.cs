@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Web_HoangHiep.Models;
-using Web_HoangHiep.Models.LoginModelClient;
 
 namespace Web_HoangHiep.Dao_Client
 {
@@ -13,11 +9,10 @@ namespace Web_HoangHiep.Dao_Client
         public LoginDaoClient()
 
         {
-
             db = new MyDBContext();
         }
 
-        public bool Check(string username,string password)
+        public bool Check(string username, string password)
         {
             var result = db.KhachHangs.SingleOrDefault(n => n.TaiKhoan == username && n.MatKhau == password);
             if (result == null)
@@ -35,6 +30,5 @@ namespace Web_HoangHiep.Dao_Client
         {
             return db.KhachHangs.Count(x => x.Email == email) > 0;
         }
-
     }
 }

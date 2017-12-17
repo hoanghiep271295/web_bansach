@@ -66,11 +66,11 @@
                     @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
                 </td>
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { @madonhang = item.MaDonHang }) |
-
-                    @Html.ActionLink("Delete", "Delele", new { @madonhang = item.MaDonHang })
-                    </td>
+                <td style="text-align: center">
+                    <a href="@Url.Action("Edit", "HoaDonAD", new { id = item.MaDonHang })"><i class="glyphicon glyphicon-edit"></i></a>
+                    &nbsp;
+                    <a href="@Url.Action("Delete", "HoaDonAD", new { id = item.MaDonHang })"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
                     <td>
                <button class="btn" ><a href="@Url.Action("Index","ChiTietDonHangAD",new { @searchString=item.MaDonHang})">Details</a></button>
 
