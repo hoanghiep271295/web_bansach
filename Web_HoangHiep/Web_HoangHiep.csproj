@@ -272,6 +272,7 @@
     <Content Include="Areas\Admin\Views\ChuDeAD\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChuDeAD\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ChuDeAD\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaXuatBanAD\Delele.cshtml" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -385,6 +386,7 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

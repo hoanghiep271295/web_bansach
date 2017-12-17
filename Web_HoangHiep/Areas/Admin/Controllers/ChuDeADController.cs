@@ -127,6 +127,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpDelete]
         public ActionResult Delele(int id)
         {
             if (Session["User"] == null)

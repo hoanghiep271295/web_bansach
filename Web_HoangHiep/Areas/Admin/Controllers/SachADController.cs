@@ -154,7 +154,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View("Index");
             }
         }
-
+        [HttpDelete]
         public ActionResult Delele(int ID)
         {
             if (Session["User"] == null)

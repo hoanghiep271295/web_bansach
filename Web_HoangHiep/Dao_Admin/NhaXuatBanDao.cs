@@ -70,25 +70,17 @@ namespace Web_HoangHiep.Dao_Admin
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteNXB(int id)
+        public void Delete(int id)
         {
             try
             {
-                if (CheckNXBBeforeDelete(id))
-                {
                     NhaXuatBan nxb = db.NhaXuatBans.Find(id);
                     db.NhaXuatBans.Remove(nxb);
                     db.SaveChanges();
-                    return true;
-                }
-                else
-                    return false;
-               
             }
             catch (Exception ex)
             {
                 Console.Write("Loi" + ex.Message + "nay dan xay ra");
-                return false;
             }
         }
 

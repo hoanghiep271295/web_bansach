@@ -126,8 +126,10 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         /// Xoá nhà xuất bản
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult Delele(int id)
+        /// <returns></returns>]
+        
+        [HttpGet]
+        public ActionResult DeleleNXB(int id)
         {
             if (Session["User"] == null)
             {
@@ -135,16 +137,9 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
             else
             {
-             var dao = new NhaXuatBanDao();
-              if(dao.DeleteNXB(id))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index");
-                }
-               
+                new NhaXuatBanDao().Delete(id);
+
+                return RedirectToAction("Index");
             }
         }
     }
