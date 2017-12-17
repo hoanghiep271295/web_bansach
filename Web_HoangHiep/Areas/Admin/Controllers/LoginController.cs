@@ -9,15 +9,20 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
     public class LoginController : Controller
     {
         // GET: Admin/Login
-        public ActionResult Index()
-        {
-            return View();
-        }
+
 
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return RedirectToAction("Index","TrangChu");
+            }
+        
         }
 
         [HttpPost]

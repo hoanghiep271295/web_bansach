@@ -13,7 +13,14 @@ namespace Web_HoangHiep.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            if (Session["KhachHang"] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index","Home");
+            }
         }
 
         [HttpPost]
