@@ -13,6 +13,12 @@ namespace Web_HoangHiep.Models
         {
             DonHangs = new HashSet<DonHang>();
         }
+        public KhachHang(string socialId, string name, string email)
+        {
+            TenKhachHang = name;
+            Email = email;
+            SocialID = socialId;
+        }
 
         [Key]
         public int MaKhacHang { get; set; }

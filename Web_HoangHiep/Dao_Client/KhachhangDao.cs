@@ -58,5 +58,18 @@ namespace Web_HoangHiep.Dao_Client
         {
             return db.KhachHangs.SingleOrDefault(n => n.TaiKhoan == username && n.MatKhau == password);
         }
+        public KhachHang LoginGoogle(string socialId,string name,string email)
+        {
+            var model = db.KhachHangs.SingleOrDefault(n => n.SocialID == socialId);
+            if (model == null)
+            {
+                KhachHang kh = new KhachHang(socialId, name, email);
+                db.KhachHangs.Add(kh);
+                db.SaveChanges();
+                return kh;
+            }
+            else
+                return model;
+        }
     }
 }

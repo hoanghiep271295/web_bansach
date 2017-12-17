@@ -36,12 +36,16 @@
         </div>
     </div>
 }
+<form action="dang-nhap-google" method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger"><i class="fa fa-google-plus"></i>  Login with Google + </button>
+
+</form>
 <div class="login-left">
     <h3>NEW CUSTOMERS</h3>
     <p>Chào Mừng Khách Hàng Đến Với Hệ Thống Sách Của Chúng Tôi.Nếu Bạn Chưa Có Tài Khoản Hãy Đăng Ký Ngay Để Thỏa Sức Mua Sắm</p>
     <a class="acount-btn" href="/dang-ky">Create an Account</a>
 </div>
-
 <style>
     #password
     {
