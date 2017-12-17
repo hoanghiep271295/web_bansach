@@ -60,7 +60,7 @@ namespace Web_HoangHiep.Controllers
         {
             Session["KhachHang"] = null;
             Session[SessionCommand.SessionGioHang] = null;
-            return RedirectToAction("/");
+            return RedirectToAction("Login","LoginKH");
         }
     }
 }
