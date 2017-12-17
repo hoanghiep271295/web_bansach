@@ -62,5 +62,11 @@ namespace Web_HoangHiep.Controllers
             Session[SessionCommand.SessionGioHang] = null;
             return RedirectToAction("Login","LoginKH");
         }
+
+        [HttpPost]
+        public ActionResult LoginGoole()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
