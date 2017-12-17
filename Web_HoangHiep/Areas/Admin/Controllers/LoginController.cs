@@ -16,7 +16,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         {
             if (Session["User"] == null)
             {
-                return RedirectToAction("Login", "Login");
+                return View();
             }
             else
             {
@@ -63,9 +63,16 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
 
         public ActionResult LogOut()
         {
-            Session.Clear();
-            Session["User"] = null;
-            return RedirectToAction("Login", "Login");
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                Session.Clear();
+                Session["User"] = null;
+                return RedirectToAction("Login", "Login");
+            }
         }
     }
 }
