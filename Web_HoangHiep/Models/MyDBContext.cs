@@ -26,7 +26,7 @@ namespace Web_HoangHiep.Models
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<DonHang>()
-                .HasMany(e => e.ChiTietDonHang)
+                .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.DonHang)
                 .WillCascadeOnDelete(false);
 
@@ -47,7 +47,11 @@ namespace Web_HoangHiep.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.DonHang)
+                .Property(e => e.SocialID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<KhachHang>()
+                .HasMany(e => e.DonHangs)
                 .WithOptional(e => e.KhachHang)
                 .HasForeignKey(e => e.MaKH);
 
@@ -64,12 +68,12 @@ namespace Web_HoangHiep.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Sach>()
-                .HasMany(e => e.ChiTietDonHang)
+                .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sach>()
-                .HasMany(e => e.ThamGia)
+                .HasMany(e => e.ThamGias)
                 .WithRequired(e => e.Sach)
                 .WillCascadeOnDelete(false);
 
@@ -82,13 +86,9 @@ namespace Web_HoangHiep.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<TacGia>()
-                .HasMany(e => e.ThamGia)
+                .HasMany(e => e.ThamGias)
                 .WithRequired(e => e.TacGia)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.UserName)
-                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Password)

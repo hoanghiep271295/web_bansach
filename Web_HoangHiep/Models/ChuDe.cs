@@ -10,7 +10,7 @@ namespace Web_HoangHiep.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ChuDe()
         {
-            Sach = new HashSet<Sach>();
+            Saches = new HashSet<Sach>();
         }
 
         [Key]
@@ -20,6 +20,6 @@ namespace Web_HoangHiep.Models
         public string TenChuDe { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sach> Sach { get; set; }
+        public virtual ICollection<Sach> Saches { get; set; }
     }
 }

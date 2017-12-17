@@ -10,7 +10,7 @@ namespace Web_HoangHiep.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TacGia()
         {
-            ThamGia = new HashSet<ThamGia>();
+            ThamGias = new HashSet<ThamGia>();
         }
 
         [Key]
@@ -32,6 +32,6 @@ namespace Web_HoangHiep.Models
         public string Email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThamGia> ThamGia { get; set; }
+        public virtual ICollection<ThamGia> ThamGias { get; set; }
     }
 }

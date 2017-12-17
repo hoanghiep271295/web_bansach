@@ -11,7 +11,7 @@ namespace Web_HoangHiep.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
-            DonHang = new HashSet<DonHang>();
+            DonHangs = new HashSet<DonHang>();
         }
 
         [Key]
@@ -33,7 +33,6 @@ namespace Web_HoangHiep.Models
         public string DiaChi { get; set; }
 
         [Column(TypeName = "date")]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime? NgaySinh { get; set; }
 
         public bool? GioiTinh { get; set; }
@@ -42,9 +41,9 @@ namespace Web_HoangHiep.Models
         public string DienThoai { get; set; }
 
         [StringLength(255)]
-        public string socialID { get; set; }
+        public string SocialID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonHang> DonHang { get; set; }
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }
