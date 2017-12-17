@@ -60,5 +60,12 @@ namespace Web_HoangHiep.Controllers
             var model = new QuanLySachDao().listTacGia();
             return PartialView(model);
         }
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+         
+            return View();
+        }
     }
 }
