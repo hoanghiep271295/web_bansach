@@ -103,6 +103,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 return View("Index");
             }
         }
+
         [HttpDelete]
         public ActionResult Delele(int ID)
         {
@@ -114,6 +115,26 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             {
                 new KhachHangDao().Delete(ID);
                 return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult SendEmail(int id)
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var dao = new KhachHangDao();
+                var model = dao.getById(id);
+                if (model != null)
+                {
+                    ViewBag.Email = model.Email;
+                    return View();
+                }
+                else
+                    return RedirectToAction("Index", "KhachHangAD");
             }
         }
     }

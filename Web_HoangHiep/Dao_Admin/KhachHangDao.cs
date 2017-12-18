@@ -56,16 +56,40 @@ namespace Web_HoangHiep.Dao_Admin
             }
         }
 
-        public KhachHang getByID(string taikhoan)
+        /// <summary>
+        /// lấy khách hàng theo tên tài khoản đăng nhập
+        /// </summary>
+        /// <param name="taikhoan"></param>
+        /// <returns></returns>
+        public KhachHang getByTaiKhoan(string taikhoan)
         {
             return db.KhachHangs.SingleOrDefault(x => x.TaiKhoan == taikhoan);
         }
+        /// <summary>
+        /// view detail khách hàng
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
 
         public KhachHang ViewDetails(int ID)
         {
             return db.KhachHangs.Find(ID);
         }
+        /// <summary>
+        /// Kiểm tra sự tồn tại của khách hàng bằng id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public KhachHang getById(int id)
+        {
+            return db.KhachHangs.SingleOrDefault(x => x.MaKhacHang == id);
+        }
 
+
+        /// <summary>
+        /// xóa 1 khách hàng bởi id truyền vào
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             try
