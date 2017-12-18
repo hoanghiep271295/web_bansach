@@ -146,6 +146,7 @@
     <Content Include="Areas\AssetAdmin\css\font-awesome.css" />
     <Content Include="Areas\AssetAdmin\css\jqvmap.css" />
     <Content Include="Areas\AssetAdmin\css\style.css" />
+    <Content Include="Areas\AssetAdmin\fonts\fontawesome-webfont.svg" />
     <Content Include="Areas\AssetAdmin\images\a.png" />
     <Content Include="Areas\AssetAdmin\images\favicon.ico" />
     <Content Include="Areas\AssetAdmin\js\bootstrap.js" />
@@ -273,6 +274,22 @@
     <Content Include="Areas\Admin\Views\ChuDeAD\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhaXuatBanAD\Delele.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangAD\Email.cshtml" />
+    <Content Include="Areas\AssetAdmin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\AssetAdmin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\AssetAdmin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\AssetAdmin\fonts\FontAwesome.otf" />
+    <Content Include="Areas\AssetAdmin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\AssetAdmin\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - FTP %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - FTP %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - Web Deploy %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - Web Deploy %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\bookstoremaster - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\cloudbookstore - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cloudbookstore - Web Deploy.pubxml" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
@@ -306,7 +323,6 @@
     <Content Include="Views\Sach\SieuPhamSach.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\TacGia\SachTheoTacGia.cshtml" />
-    <Content Include="Views\web.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -381,7 +397,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -421,7 +439,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AssetAdmin\fonts\" />
     <Folder Include="HinhAnhSP\" />
   </ItemGroup>
   <PropertyGroup>

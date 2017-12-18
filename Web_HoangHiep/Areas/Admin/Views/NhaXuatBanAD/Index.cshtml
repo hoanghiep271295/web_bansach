@@ -59,10 +59,14 @@ Quản lý Nhà xuất bản
                     @Html.DisplayFor(modelItem => item.DienThoai)
                 </td>
                 <td style="text-align: center" >
-                   <a href="@Url.Action("Edit", "NhaXuatBanAD", new { id = item.MaNXB })" ><i class="glyphicon glyphicon-edit" ></i></a>
+                   @*<a href="@Url.Action("Edit", "NhaXuatBanAD", new { id = item.MaNXB })" ><i class="glyphicon glyphicon-edit" ></i></a>
                     &nbsp; 
-                   <a href="@Url.Action("DeleleNXB", "NhaXuatBanAD", new { id = item.MaNXB })"><i class="glyphicon glyphicon-trash"></i></a> 
+                   <a href="@Url.Action("DeleleNXB", "NhaXuatBanAD", new { id = item.MaNXB })"><i class="glyphicon glyphicon-trash"></i></a>*@ 
              
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNXB }) |
+
+                    @Html.ActionLink("Delete", "DeleleNXB", new { id = item.MaNXB }) |
                    </td>
             </tr>
         }

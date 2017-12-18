@@ -105,8 +105,8 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
         }
 
-        [HttpDelete]
-        public ActionResult Delele(int ID)
+        [HttpGet]
+        public ActionResult DeleteKH(int ID)
         {
             if (Session["User"] == null)
             {
@@ -142,9 +142,9 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult SendEmail(string email, string subject, string content)
         {
-            var fromAddress = "cuongfunny9x@gmail.com";
+            var fromAddress = "vuhoanghiep271295@gmail.com";
             var toAddress = email;
-            const string fromPassword = "cuongvl273";
+            const string fromPassword = "ngochien21031997";
             string body = content;
             var smtp = new System.Net.Mail.SmtpClient();
             {

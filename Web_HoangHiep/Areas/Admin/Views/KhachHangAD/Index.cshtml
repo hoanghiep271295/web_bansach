@@ -8,7 +8,7 @@
 
 @section Header
 {
-    Danh Sach Khach hang
+Quản lý khách hàng
 }
 <div style="float:right">
     <a class="btn btn-primary" href="@Url.Action("Add","KhachHangAD")">Thêm Mới</a>
@@ -36,7 +36,6 @@
         <tr>
             <th>Tài Khoản</th>
             <th>Tên Khách Hàng</th>
-            <th>Mật Khẩu</th>
             <th>Email </th>
             <th>Địa Chỉ</th>
             <th>Điện Thoại</th>
@@ -54,9 +53,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.TenKhachHang)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MatKhau)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
@@ -68,12 +65,17 @@
                     @Html.DisplayFor(modelItem => item.DienThoai)
                 </td>
                 <td style="text-align: center">
-                    <a href="@Url.Action("Edit", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-edit"></i></a>
+                    @*<a href="@Url.Action("Edit", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-edit"></i></a>
                     &nbsp;
-                    <a href="@Url.Action("Delete", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a href="@Url.Action("DeleteKH", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-trash"></i></a>
                     &nbsp;
-                    <a href="@Url.Action("Email", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-send"></i></a>
-                </td>
+                    <a href="@Url.Action("Email", "KhachHangAD", new { id = item.MaKhacHang })"><i class="glyphicon glyphicon-send"></i></a>*@
+               
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaKhacHang }) |
+
+                    @Html.ActionLink("Delete", "DeleteKH", new { id = item.MaKhacHang }) |
+                    @Html.ActionLink("Email", "Email", new { id = item.MaKhacHang })
+                 </td>
             </tr>
         }
     </tbody>

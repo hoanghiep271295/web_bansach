@@ -73,10 +73,14 @@
                 </td>
            
                 <td style="text-align: center">
-                    <a href="@Url.Action("Edit", "SachAD", new { id = item.MaSach })"><i class="glyphicon glyphicon-edit"></i></a>
+                    @*<a href="@Url.Action("Edit", "SachAD", new { id = item.MaSach })"><i class="glyphicon glyphicon-edit"></i></a>
                     &nbsp; 
-                    <a href="@Url.Action("Delete", "SachAD", new { id = item.MaSach })"><i class="glyphicon glyphicon-trash"></i></a>
-                </td>
+                    <a href="@Url.Action("Delete", "SachAD", new { id = item.MaSach })"><i class="glyphicon glyphicon-trash"></i></a>*@
+            
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaSach }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSach }) |
+                    </td>
 
             </tr>
         }
