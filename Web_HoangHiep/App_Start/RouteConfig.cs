@@ -110,6 +110,13 @@ namespace Web_HoangHiep
            defaults: new { controller = "LoginKH", action = "Login", id = UrlParameter.Optional },
           namespaces: new[] { "Web_HoangHiep.Controllers" }
         );
+            routes.MapRoute(
+                 name: "Dang Nhap Google",
+                 url: "dang-nhap-google",
+                 defaults: new { controller = "LoginKH", action = "LoginWithGooglePlus", id = UrlParameter.Optional },
+                 namespaces: new[] { "Web_HoangHiep.Controllers" }
+                                         );
+
 
             routes.MapRoute(
                  name: "Dat Hang",
