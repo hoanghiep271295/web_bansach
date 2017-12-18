@@ -284,6 +284,29 @@
     <Content Include="scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Cart\SuaGioHang.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\ChuDe\Category.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\HeaderCart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Slide.cshtml" />
+    <Content Include="Views\Home\SlideBarLeft.cshtml" />
+    <Content Include="Views\Home\SlideBarNhaXuatBan.cshtml" />
+    <Content Include="Views\Home\SlideBarTacGia.cshtml" />
+    <Content Include="Views\KhachHang\DangKy.cshtml" />
+    <Content Include="Views\LayOutClient\LayOutClient.cshtml" />
+    <Content Include="Views\LoginKH\Login.cshtml" />
+    <Content Include="Views\NhaXuatBan\SachTheoNXB.cshtml" />
+    <Content Include="Views\Sach\ChiTietSP.cshtml" />
+    <Content Include="Views\Sach\ListAllProduct.cshtml" />
+    <Content Include="Views\Sach\NewProduct.cshtml" />
+    <Content Include="Views\Sach\SieuPhamSach.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\TacGia\SachTheoTacGia.cshtml" />
+    <Content Include="Views\web.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
