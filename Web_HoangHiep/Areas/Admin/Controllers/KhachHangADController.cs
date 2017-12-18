@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Web.Mvc;
 using Web_HoangHiep.Dao_Admin;
 using Web_HoangHiep.Models;
 
@@ -118,7 +119,7 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult SendEmail(int id)
+        public ActionResult Email(int id)
         {
             if (Session["User"] == null)
             {
@@ -136,6 +137,26 @@ namespace Web_HoangHiep.Areas.Admin.Controllers
                 else
                     return RedirectToAction("Index", "KhachHangAD");
             }
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail(string email, string subject, string content)
+        {
+            var fromAddress = "cuongfunny9x@gmail.com";
+            var toAddress = email;
+            const string fromPassword = "cuongvl273";
+            string body = content;
+            var smtp = new System.Net.Mail.SmtpClient();
+            {
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                smtp.Timeout = 20000;
+            }
+            smtp.Send(fromAddress, toAddress, subject, body);
+            return RedirectToAction("Index","KhachHangAD");
         }
     }
 }

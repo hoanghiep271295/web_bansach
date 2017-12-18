@@ -259,7 +259,6 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\SingIn.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
-    <Content Include="AssetsClient\images\Thumbs.db" />
     <Content Include="Areas\Admin\Views\TrangChu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonAD\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonAD\Edit.cshtml" />
@@ -273,7 +272,9 @@
     <Content Include="Areas\Admin\Views\ChuDeAD\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ChuDeAD\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhaXuatBanAD\Delele.cshtml" />
-    <Content Include="Areas\Admin\Views\KhachHangAD\SendEmail.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHangAD\Email.cshtml" />
+    <None Include="Properties\PublishProfiles\cloudbookstore - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\cloudbookstore - Web Deploy.pubxml" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -302,6 +303,15 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="CommonSession\SessionCommand.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ChuDeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\LoginKHController.cs" />
+    <Compile Include="Controllers\NhaXuatBanController.cs" />
+    <Compile Include="Controllers\SachController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TacGiaController.cs" />
     <Compile Include="Dao_Admin\ChiTietDonHangDao.cs" />
     <Compile Include="Dao_Admin\ChuDeDao.cs" />
     <Compile Include="Dao_Admin\HoaDonDao.cs" />
@@ -356,6 +366,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Cart\SuaGioHang.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\ChuDe\Category.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\HeaderCart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Slide.cshtml" />
+    <Content Include="Views\Home\SlideBarLeft.cshtml" />
+    <Content Include="Views\Home\SlideBarNhaXuatBan.cshtml" />
+    <Content Include="Views\Home\SlideBarTacGia.cshtml" />
+    <Content Include="Views\KhachHang\DangKy.cshtml" />
+    <Content Include="Views\LayOutClient\LayOutClient.cshtml" />
+    <Content Include="Views\LoginKH\Login.cshtml" />
+    <Content Include="Views\NhaXuatBan\SachTheoNXB.cshtml" />
+    <Content Include="Views\Sach\ChiTietSP.cshtml" />
+    <Content Include="Views\Sach\ListAllProduct.cshtml" />
+    <Content Include="Views\Sach\NewProduct.cshtml" />
+    <Content Include="Views\Sach\SieuPhamSach.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\TacGia\SachTheoTacGia.cshtml" />
+    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
